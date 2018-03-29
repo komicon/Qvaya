@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">QVaya</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Daily Notifications</string>
+    <string name="slide_1_desc">Set your daily Reminders by the help of Qvaya App</string>
+    <string name="slide_2_title">Event Notifications</string>
+    <string name="slide_2_desc">Learn about the different Events in and around Campus</string>
+    <string name="slide_3_title">Timetable Chart</string>
+    <string name="slide_3_desc">Make your Notifications reminders by the help of Qvaya App</string>
+
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>
