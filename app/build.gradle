@@ -5,7 +5,7 @@ android {
     defaultConfig {
         applicationId "com.example.thando.qvaya"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -28,11 +28,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.github.msayan:tutorial-view:v1.0.4'
     compile 'com.github.rtoshiro.fullscreenvideoview:fullscreenvideoview:1.1.2'
+    compile "com.android.support:design:24.2.0"
 }
-
-
 repositories {
     mavenCentral()
+
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
 }
 
 

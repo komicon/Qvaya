@@ -27,7 +27,7 @@ public class startscreen extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(startscreen.this, HomeActivity.class));
+        startActivity(new Intent(startscreen.this, Login.class));
         finish();
     }
     @Override
