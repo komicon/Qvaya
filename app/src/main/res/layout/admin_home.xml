@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context="com.example.thando.qvaya.AdminHome">
+    tools:context="com.example.thando.qvaya.Admin.AdminHome">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

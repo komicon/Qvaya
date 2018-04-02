@@ -8,6 +8,8 @@
     <color name="bg_slider_screen2">#16bc7d</color>
     <color name="bg_slider_screen3">#203d8c</color>
 
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
 
     <color name="darkgrey">#4e5859</color>
     <color name="blue">#3294b5</color>

@@ -18,10 +18,11 @@
             android:layout_marginBottom="@dimen/slide_title"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
+
         <ImageView
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
-            android:src="@drawable/ic_three_name" />/ android:src="@assets/"
+            android:src="@android:drawable/ic_popup_reminder" />/ android:src="@assets/"
         />
         <TextView
             android:layout_width="wrap_content"

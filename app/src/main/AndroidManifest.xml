@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.thando.qvaya">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"
@@ -11,9 +14,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".StartScreen.WelcomeActivity" />
         <activity
-            android:name=".startscreen"
+            android:name=".StartScreen.startscreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,13 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeScreen" />
-        <activity android:name=".Login" />
-        <activity android:name=".AdminHome" />
-        <activity android:name=".AdminCreateDriver" />
-        <activity android:name=".AdminDeleteDriver" />
-        <activity android:name=".AdminUpdateDriver" />
-        <activity android:name=".AdminReadDriver"></activity>
+        <activity android:name=".Login.Login" />
+        <activity android:name=".Admin.AdminHome" />
+        <activity android:name=".Admin.AdminCreateDriver" />
+        <activity android:name=".Admin.AdminDeleteDriver" />
+        <activity android:name=".Admin.AdminUpdateDriver" />
+        <activity android:name=".Admin.DetailActivity" />
+        <activity android:name=".Admin.MainActivity"/>
     </application>
 
 </manifest>

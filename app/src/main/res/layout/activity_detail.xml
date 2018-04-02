@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/numberofsongs"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/numberofsongs"
+        android:layout_marginBottom="15dp"
+
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        app:backgroundTint="@color/cardview_light_background"
+        app:srcCompat="?android:attr/homeAsUpIndicator" />
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/thumbnail_image_header"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerInside"
+        />
+
+    <TextView
+        android:id="@+id/nameofsongs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thumbnail_image_header"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Driver Name"
+        android:textAlignment="center"
+        android:textSize="9sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameofsongs"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:gravity="center_horizontal"
+        android:textSize="8sp" />
+
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberofsongs"
+        android:layout_marginLeft="10dp"
+        android:text="Driver Rating"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:textSize="9sp"
+        android:layout_below="@+id/name"/>
+
+    <TextView
+        android:id="@+id/numberofsongsdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberofsongs"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_centerHorizontal="true"
+        android:paddingRight="100dp"
+        android:drawableLeft="@drawable/ic_gold_star"
+
+        android:textSize="8.9sp" />
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverjoinyear"
+        android:layout_marginLeft="10dp"
+        android:text="Since"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="9sp"
+        android:layout_below="@+id/numberofsongsdata"/>
+
+    <TextView
+        android:id="@+id/driverjoinyeardata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/driverjoinyear"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="3dp"
+
+        android:gravity="center_horizontal"
+        android:textSize="8sp" />
+
+
+</RelativeLayout>
