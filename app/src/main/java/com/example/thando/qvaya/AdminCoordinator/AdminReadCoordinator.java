@@ -1,4 +1,4 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya.AdminCoordinator;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,6 +17,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.thando.qvaya.AdminDriver.AdminHome;
+import com.example.thando.qvaya.AdminDriver.AdminReadDriver;
+import com.example.thando.qvaya.AdminDriver.AlbumsAdapter;
 import com.example.thando.qvaya.R;
 import com.example.thando.qvaya.api.Client;
 import com.example.thando.qvaya.api.Service;
@@ -32,14 +35,12 @@ import retrofit2.Response;
 
 import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
-public class MainActivity extends AppCompatActivity {
-
+public class AdminReadCoordinator extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AlbumsAdapter adapter;
     private List<Album> albumList;
     private Album album;
     ProgressDialog pd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,9 +193,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<AlbumsResponse> call, Throwable t) {
                     Log.d("Error", t.getMessage());
-                    Toast.makeText(MainActivity.this, "Error Fetching Data!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminReadCoordinator.this, "Error Fetching Data!", Toast.LENGTH_SHORT).show();
                     pd.hide();
-
                 }
             });
         }catch (Exception e){

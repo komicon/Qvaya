@@ -25,12 +25,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login.Login" />
-        <activity android:name=".Admin.AdminHome" />
-        <activity android:name=".Admin.AdminCreateDriver" />
-        <activity android:name=".Admin.AdminDeleteDriver" />
-        <activity android:name=".Admin.AdminUpdateDriver" />
-        <activity android:name=".Admin.DetailActivity" />
-        <activity android:name=".Admin.MainActivity"/>
+        <activity android:name=".AdminDriver.AdminHome" />
+        <activity android:name=".AdminDriver.AdminCreateDriver" />
+        <activity android:name=".AdminDriver.AdminDeleteDriver" />
+        <activity android:name=".AdminDriver.AdminUpdateDriver" />
+        <activity android:name=".AdminDriver.DetailActivity" />
+        <activity android:name=".AdminDriver.AdminReadDriver" />
+        <activity android:name=".AdminCoordinator.AdminCreateCoordinator" />
+        <activity android:name=".AdminCoordinator.AdminDeleteCoordinator" />
+        <activity android:name=".AdminCoordinator.AdminUpdateCoordinator" />
+        <activity android:name=".AdminCoordinator.AdminReadCoordinator"></activity>
     </application>
 
 </manifest>

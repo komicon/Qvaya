@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.thando.qvaya.Admin.AdminDeleteDriver"
+    tools:context="com.example.thando.qvaya.AdminDriver.AdminDeleteDriver"
     tools:layout_editor_absoluteY="25dp">
 
     <android.support.design.widget.FloatingActionButton
@@ -33,7 +33,7 @@
         android:layout_marginEnd="43dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="102dp"
-        app:layout_constraintBottom_toTopOf="@+id/DeleteDriverAdmin"
+        app:layout_constraintBottom_toTopOf="@+id/DeleteCoordinatorAdmin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +41,7 @@
 
     <android.support.v7.widget.AppCompatButton
 
-        android:id="@+id/DeleteDriverAdmin"
+        android:id="@+id/DeleteCoordinatorAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="77dp"

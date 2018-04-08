@@ -1,4 +1,5 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya.AdminCoordinator;
+
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -12,22 +13,24 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.thando.qvaya.AdminDriver.AdminCreateDriver;
+import com.example.thando.qvaya.AdminDriver.AdminHome;
 import com.example.thando.qvaya.R;
 
-public class AdminCreateDriver extends AppCompatActivity {
 
+
+public class AdminCreateCoordinator extends AppCompatActivity {
     private EditText firstnametxt;
     private EditText lastnametxt;
     private EditText usernametxt;
     private EditText cellnumbertxt;
     private EditText passwordtxt;
     private AppCompatButton btnCreateDriver;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_create_driver);
+        setContentView(R.layout.activity_admin_create_coordinator);
+
         firstnametxt = findViewById(R.id.FirstNameTxt);
 
         cellnumbertxt =  findViewById(R.id.CellNumbertxt);
@@ -38,7 +41,7 @@ public class AdminCreateDriver extends AppCompatActivity {
                                        Spanned dest, int dstart, int dend) {
                 for (int i = start; i < end; i++) {
                     if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
-                        Toast.makeText(AdminCreateDriver.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminCreateCoordinator.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
                         return "";
                     }
                 }
@@ -58,7 +61,7 @@ public class AdminCreateDriver extends AppCompatActivity {
                                        Spanned dest, int dstart, int dend) {
                 for (int i = start; i < end; i++) {
                     if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
-                        Toast.makeText(AdminCreateDriver.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminCreateCoordinator.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
                         return "";
                     }
                 }
@@ -82,7 +85,7 @@ public class AdminCreateDriver extends AppCompatActivity {
                                        Spanned dest, int dstart, int dend) {
                 for (int i = start; i < end; i++) {
                     if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
-                        Toast.makeText(AdminCreateDriver.this, "Invalid Input \n Letters Only!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminCreateCoordinator.this, "Invalid Input \n Letters Only!", Toast.LENGTH_SHORT).show();
                         return "";
                     }
                 }
@@ -111,7 +114,18 @@ public class AdminCreateDriver extends AppCompatActivity {
 
 
 
-    public void CreateDriverAdminBTN(View view) {
+
+
+    private void checkRequiredFields() {
+        if (!firstnametxt.getText().toString().isEmpty() && !lastnametxt.getText().toString().isEmpty() && !usernametxt.getText().toString().isEmpty()) {
+            btnCreateDriver.setEnabled(true);
+        } else {
+            btnCreateDriver.setEnabled(false);
+        }
+    }
+
+
+    public void CreateCoordinaAdminBTN(View view) {
 
         boolean error = false;
 
@@ -142,7 +156,7 @@ public class AdminCreateDriver extends AppCompatActivity {
         }
         if(!error)
         {
-            Toast.makeText(this, "Driver created", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Coordinator created", Toast.LENGTH_SHORT).show();
             firstnametxt.getText().clear();
             lastnametxt.getText().clear();
             usernametxt.getText().clear();
@@ -210,13 +224,6 @@ public class AdminCreateDriver extends AppCompatActivity {
             }
 
         }
-    }
 
-    private void checkRequiredFields() {
-        if (!firstnametxt.getText().toString().isEmpty() && !lastnametxt.getText().toString().isEmpty() && !usernametxt.getText().toString().isEmpty()) {
-            btnCreateDriver.setEnabled(true);
-        } else {
-            btnCreateDriver.setEnabled(false);
-        }
     }
 }

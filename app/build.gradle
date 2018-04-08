@@ -2,6 +2,24 @@ apply plugin: 'com.android.application'
 
 
 android {
+
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            //add your srcdir here eg 'src/main/res/layouts/admin'
+
+                            'src/main/res/layouts/admindriver',
+                            'src/main/res/layouts/admincoordinator',
+                            'src/main/res/layouts/admin',
+                            'src/main/res/layouts/startscreen',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
+        }
+    }
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.thando.qvaya"
@@ -17,6 +35,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
@@ -46,7 +66,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
 
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
-
 
     // Recyclerview Library
     implementation 'com.android.support:recyclerview-v7:27.0.2'
@@ -78,6 +97,26 @@ dependencies {
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
 }
-
-
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+    compile 'com.android.support:support-v13:27.1.0'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
 

@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.thando.qvaya.Admin.AdminHome;
+import com.example.thando.qvaya.AdminDriver.AdminHome;
 import com.example.thando.qvaya.StartScreen.BaseActivity;
 import com.example.thando.qvaya.R;
 
@@ -80,10 +80,6 @@ public class Login extends BaseActivity {
             passwordtxt.getText().clear();
 
         } else {
-
-
-
-
             if(drivernumbertxt.getText().toString().isEmpty())
             {
                 drivernumbertxt.requestFocus();
@@ -101,12 +97,6 @@ public class Login extends BaseActivity {
                     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 }
             }
-
-
         }
-
-
-
-
     }
 }

@@ -1,4 +1,4 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya.AdminDriver;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -10,7 +10,9 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.widget.LinearLayout;
 
+import com.example.thando.qvaya.AdminCoordinator.BusCoordinatorAdminFragment;
 import com.example.thando.qvaya.R;
+import com.example.thando.qvaya.SectionsPageAdapter;
 
 public class AdminHome extends AppCompatActivity {
 

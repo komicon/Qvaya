@@ -1,4 +1,4 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya.AdminDriver;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ public class DetailActivity extends AppCompatActivity {
         FloatingActionButton floatingActionButton=(FloatingActionButton)findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                startActivity(new Intent(view.getContext(), MainActivity.class));
+                startActivity(new Intent(view.getContext(), AdminReadDriver.class));
             }
         });
 

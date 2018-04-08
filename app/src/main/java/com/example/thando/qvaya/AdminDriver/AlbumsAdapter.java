@@ -1,4 +1,4 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya.AdminDriver;
 
 import android.content.Context;
 import android.content.Intent;

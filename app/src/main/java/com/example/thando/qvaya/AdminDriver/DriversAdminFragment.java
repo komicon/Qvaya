@@ -1,4 +1,4 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya.AdminDriver;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,7 +69,7 @@ public class DriversAdminFragment extends Fragment {
         CardViewReaddriver .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), AdminReadDriver.class);
                 startActivity(intent);
             }
         });

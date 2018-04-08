@@ -1,4 +1,4 @@
-package com.example.thando.qvaya.Admin;
+package com.example.thando.qvaya;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
