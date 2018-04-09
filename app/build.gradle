@@ -67,6 +67,8 @@ dependencies {
 
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
 
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
     // Recyclerview Library
     implementation 'com.android.support:recyclerview-v7:27.0.2'
 
