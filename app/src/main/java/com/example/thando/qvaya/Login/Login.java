@@ -86,7 +86,9 @@ public class Login extends BaseActivity {
             if( drivernumbertxt.getText().toString().equals("3") ){
                 startActivity(new Intent(Login.this, DriverHome.class));
             }
-
+            if( !drivernumbertxt.getText().toString().equals("3")  && !drivernumbertxt.getText().toString().equals("2") && !drivernumbertxt.getText().toString().equals("1") ){
+                Toast.makeText(this, " 1 for \tAdmin\n 2 for \tStudents\n 3 for \tDrivers", Toast.LENGTH_LONG).show();
+            }
             drivernumbertxt.getText().clear();
             passwordtxt.getText().clear();
 

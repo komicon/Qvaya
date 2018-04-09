@@ -42,7 +42,8 @@
         <activity android:name=".Student.StudentProfile" />
         <activity android:name=".Student.StudentViewRes" />
         <activity android:name=".Student.StudentSetting" />
-        <activity android:name=".Student.StudentEvent"></activity>
+        <activity android:name=".Student.StudentEvent" />
+        <activity android:name=".Driver.DriverProfile"></activity>
     </application>
 
 </manifest>
