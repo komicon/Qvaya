@@ -28,7 +28,7 @@ public class DriversAdminFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.driveradminfragment,container,false);
-        CardViewCreatedriver =  view.findViewById(R.id.createdriveradminCV);
+        CardViewCreatedriver =  view.findViewById(R.id.SetReminderStudentCV);
 
         CardViewCreatedriver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +41,7 @@ public class DriversAdminFragment extends Fragment {
 
         //--------
 
-        CardViewDeletedriver =  view.findViewById(R.id.deletedriveradminCV);
+        CardViewDeletedriver =  view.findViewById(R.id.profileStudentCV);
 
         CardViewDeletedriver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +52,7 @@ public class DriversAdminFragment extends Fragment {
         });
 
         //-----
-        CardViewUpdatedriver  =  view.findViewById(R.id.updatedriveradminCV);
+        CardViewUpdatedriver  =  view.findViewById(R.id.StudentViewResCV);
 
         CardViewUpdatedriver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class DriversAdminFragment extends Fragment {
 
 
         //-----------
-        CardViewReaddriver   =  view.findViewById(R.id.readdriveradminCV);
+        CardViewReaddriver   =  view.findViewById(R.id.StudentSettingCV);
 
         CardViewReaddriver .setOnClickListener(new View.OnClickListener() {
             @Override

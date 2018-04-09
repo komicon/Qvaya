@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "28234458943",
+    "firebase_url": "https://qvayaapp.firebaseio.com",
+    "project_id": "qvayaapp",
+    "storage_bucket": "qvayaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28234458943:android:6c0b8f131b65898b",
+        "android_client_info": {
+          "package_name": "com.example.thando.qvaya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28234458943-b06u8mec1qf5o8bt6161d6m5mcu9u2fp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyGnx-CLLT82mR4RdeSXxFaVu6QB78by0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

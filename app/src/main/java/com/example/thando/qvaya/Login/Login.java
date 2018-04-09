@@ -10,8 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.thando.qvaya.AdminDriver.AdminHome;
+import com.example.thando.qvaya.Driver.DriverHome;
 import com.example.thando.qvaya.StartScreen.BaseActivity;
 import com.example.thando.qvaya.R;
+import com.example.thando.qvaya.Student.StudentHome;
 
 import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
@@ -75,7 +77,16 @@ public class Login extends BaseActivity {
 
         if(!error)
         {
-            startActivity(new Intent(Login.this, AdminHome.class));
+            if( drivernumbertxt.getText().toString().equals("1") ){
+                startActivity(new Intent(Login.this, AdminHome.class));
+            }
+            if( drivernumbertxt.getText().toString().equals("2") ){
+                startActivity(new Intent(Login.this, StudentHome.class));
+            }
+            if( drivernumbertxt.getText().toString().equals("3") ){
+                startActivity(new Intent(Login.this, DriverHome.class));
+            }
+
             drivernumbertxt.getText().clear();
             passwordtxt.getText().clear();
 
@@ -87,7 +98,6 @@ public class Login extends BaseActivity {
                     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 }
             }
-
 
             if(passwordtxt.getText().toString().length() < 5||passwordtxt.getText().toString().isEmpty())
             {

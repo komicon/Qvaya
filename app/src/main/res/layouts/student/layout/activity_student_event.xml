@@ -1,22 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
 
-    android:orientation="vertical"
-    android:padding="10dp"
+    android:layout_height="match_parent"
     android:background="#fcfcfc"
     android:gravity="center"
-    android:id="@+id/ll">
+    android:orientation="vertical"
+    android:padding="10dp">
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
             android:id="@+id/SetReminderStudentCV"
@@ -24,27 +23,27 @@
             android:layout_height="190dp"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:onClick="createdriver">
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="false"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="129dp"
+                    android:layout_height="98dp"
 
                     android:padding="10dp"
-                    android:src="@drawable/ic_person_add_black_1024px" />
+                    android:src="@drawable/event" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Create"
+                    android:text="27 MAY"
                     android:textStyle="bold" />
 
                 <View
@@ -58,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Create New Drivers"
+                    android:text="SEME HALL"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -75,21 +74,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="false"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="129dp"
+                    android:layout_height="98dp"
 
                     android:padding="10dp"
-                    android:src="@drawable/ic_delete_black_48px" />
+                    android:src="@drawable/event2" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Delete"
+                    android:text="16 JUNE"
                     android:textStyle="bold" />
 
                 <View
@@ -103,19 +103,20 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Delete Drivers"
+                    android:text="SEME HALL"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
             android:id="@+id/StudentViewResCV"
@@ -128,21 +129,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="false"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="129dp"
+                    android:layout_height="98dp"
 
                     android:padding="10dp"
-                    android:src="@drawable/ic_sync_black_1024px" />
+                    android:src="@drawable/event3" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Update"
+                    android:text="12 APRIL"
                     android:textStyle="bold" />
 
                 <View
@@ -156,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Update Drivers"
+                    android:text="SEME HALL"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -173,21 +175,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="false"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="129dp"
+                    android:layout_height="98dp"
 
                     android:padding="10dp"
-                    android:src="@drawable/ic_receipt_black_48px" />
+                    android:src="@drawable/event4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Read "
+                    android:text="25 JULY"
                     android:textStyle="bold" />
 
                 <View
@@ -201,59 +204,28 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Read All Drivers"
+                    android:text="SEME HALL"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="340dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp">
-            <LinearLayout
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
 
 
-                    android:padding="10dp"/>
+        android:layout_gravity="bottom|right|center"
+        android:layout_marginBottom="16dp"
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/white"
-                    android:layout_margin="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+        android:layout_marginEnd="16dp"
+        android:baselineAligned="false"
+        android:clickable="true"
+        app:backgroundTint="@color/cardview_light_background"
+        app:srcCompat="?android:attr/homeAsUpIndicator" />
 
 
-    </LinearLayout>
 </LinearLayout>

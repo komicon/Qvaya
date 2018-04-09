@@ -34,7 +34,15 @@
         <activity android:name=".AdminCoordinator.AdminCreateCoordinator" />
         <activity android:name=".AdminCoordinator.AdminDeleteCoordinator" />
         <activity android:name=".AdminCoordinator.AdminUpdateCoordinator" />
-        <activity android:name=".AdminCoordinator.AdminReadCoordinator"></activity>
+        <activity android:name=".AdminCoordinator.AdminReadCoordinator" />
+        <activity android:name=".Student.SetRiminder" />
+        <activity android:name=".Driver.DriverTransit" />
+        <activity android:name=".Student.StudentHome" />
+        <activity android:name=".Driver.DriverHome" />
+        <activity android:name=".Student.StudentProfile" />
+        <activity android:name=".Student.StudentViewRes" />
+        <activity android:name=".Student.StudentSetting" />
+        <activity android:name=".Student.StudentEvent"></activity>
     </application>
 
 </manifest>
