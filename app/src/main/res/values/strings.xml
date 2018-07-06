@@ -29,4 +29,28 @@
     <string name="err_msg_name">Enter your full name</string>
     <string name="err_msg_email">Enter valid email address</string>
     <string name="err_msg_password">Enter the password</string>
+    <string-array name="Gender">
+        <item>--Select Gender--</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+
+    <string-array name="Job_Type">
+        <item>Choose JobType</item>
+        <item>Driver</item>
+        <item>Admin</item>
+        <item>Bus Coordinator</item>
+    </string-array>
+
+    <!--<string-array name="planets_array">-->
+    <!--<item>Choose Employee</item>-->
+    <!--<item>Emp002</item>-->
+    <!--</string-array>-->
+
+    <string-array name="Gender_array">
+        <item>Choose Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

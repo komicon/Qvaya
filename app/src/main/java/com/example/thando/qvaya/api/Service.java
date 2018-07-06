@@ -9,6 +9,7 @@ import retrofit2.http.GET;
  * Created by delaroy on 3/31/17.
  */
 public interface Service {
-    @GET("/QvayaApp/readdrivers.json")
+    //https://qvayaapp.000webhostapp.com/Thando/readdrivers.json
+    @GET("/Thando/readdrivers.json")
     Call<AlbumsResponse> getAlbums();
 }

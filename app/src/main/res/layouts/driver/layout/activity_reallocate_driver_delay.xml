@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pushNitificationRealocatedriver.ReallocateDriverDelatAlocate">
+
+
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <TextView
+        android:id="@+id/m"
+        android:layout_width="132dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/txtvRess"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m2"
+        tools:text="Reallocate driver" />
+
+    <TextView
+        android:id="@+id/m2"
+        android:layout_width="143dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="Delayed Driver driver"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@+id/m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Delayed Driver driver" />
+
+    <Spinner
+        android:id="@+id/spnDriver"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/spnRess"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvTime" />
+
+    <Spinner
+        android:id="@+id/spnRess"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/spnTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnDriver" />
+
+    <Button
+        android:id="@+id/btnReallocate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:onClick="ReallocateDrivers"
+        android:text="Re allocate Driver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReason" />
+
+    <TextView
+        android:id="@+id/txtReason"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        android:ems="10"
+        android:hint="Reason"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnReallocate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnTime" />
+
+    <Spinner
+        android:id="@+id/spnTime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtReason"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnRess" />
+
+    <TextView
+        android:id="@+id/txtvRess"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:text="Ress"
+        app:layout_constraintBottom_toTopOf="@+id/txtvTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m" />
+
+    <TextView
+        android:id="@+id/txtvTime"
+        android:layout_width="134dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:text="Time"
+        app:layout_constraintBottom_toTopOf="@+id/spnDriver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtvRess" />
+</android.support.constraint.ConstraintLayout>

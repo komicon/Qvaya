@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Spinner
+        android:id="@+id/getFreeDrivers"
+        android:layout_width="219dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="144dp" />
+
+    <Spinner
+        android:id="@+id/getAllResidence"
+        android:layout_width="219dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp" />
+
+    <Spinner
+        android:id="@+id/getResTimeTable"
+        android:layout_width="219dp"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="175dp" />
+
+    <Button
+
+        android:id="@+id/AssignBusBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/getFreeDrivers"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="88dp"
+        android:backgroundTint="@color/darkgrey"
+        android:onClick="onClickAssign"
+        android:text="Assign"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/sumOfStudents"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/getFreeDrivers"
+        android:layout_marginBottom="29dp"
+        android:layout_marginStart="-21dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textColor="@android:color/darker_gray" />
+
+</RelativeLayout>

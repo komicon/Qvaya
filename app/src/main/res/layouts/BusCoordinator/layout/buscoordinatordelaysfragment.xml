@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp"
+    android:background="#fcfcfc"
+    android:gravity="center"
+    android:orientation="vertical"
+
+    android:padding="10dp"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+    <ListView
+        android:id="@+id/delays_listview"
+        android:layout_width="match_parent"
+        android:layout_height="448dp"
+        android:layout_marginTop="50dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+
+        android:layout_gravity="bottom|right|center"
+
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="8dp"
+        android:baselineAligned="false"
+        android:clickable="true"
+        app:backgroundTint="@color/cardview_light_background"
+
+        app:srcCompat="@drawable/refresh" />
+</LinearLayout>

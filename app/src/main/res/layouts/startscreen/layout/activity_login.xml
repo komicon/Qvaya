@@ -12,11 +12,15 @@
         android:layout_width="205dp"
         android:layout_height="0dp"
 
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="171dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_input_layout"
-        app:layout_constraintEnd_toEndOf="@+id/text_input_layout"
+        app:layout_constraintBottom_toTopOf="@+id/forgotpassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
@@ -33,14 +37,13 @@
         app:layout_constraintBottom_toTopOf="@+id/passwords"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <EditText
-            android:id="@+id/studentnumber"
+            android:id="@+id/UsernameLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="textCapSentences|textVisiblePassword"
             android:maxLength="8" />
 
     </android.support.design.widget.TextInputLayout>
@@ -61,15 +64,16 @@
         app:passwordToggleEnabled="true"
 
 
-
         >
 
         <EditText
-            android:id="@+id/passwordtxt"
+            android:id="@+id/PasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberPassword"
-            android:maxLength="5" />
+            android:inputType="textCapSentences|textPassword"
+            android:maxLength="8"
+
+            />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.v7.widget.AppCompatButton
@@ -78,7 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:onClick="loginBTN"
+
+        android:onClick="forgotpassbtn"
         android:text="LOGIN"
         android:textColor="@color/white"
         app:backgroundTint="@color/darkgrey"
@@ -86,4 +91,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwords" />
+
+    <android.support.v7.widget.AppCompatButton
+
+        android:id="@+id/forgotpassword"
+        android:layout_width="129dp"
+        android:layout_height="34dp"
+
+        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginStart="52dp"
+        android:onClick="forgotpassbtn"
+        android:text="Forgot Password?"
+        android:textColor="@color/blue"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginbtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </android.support.constraint.ConstraintLayout>

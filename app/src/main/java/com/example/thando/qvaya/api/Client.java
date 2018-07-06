@@ -4,11 +4,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by delaroy on 3/31/17.
+ * Created by
  */
 public class Client {
 
-    public static final String BASE_URL = " https://barcodescanner.000webhostapp.com/";
+    public static final String BASE_URL = " https://qvayaapp.000webhostapp.com/";
     public static Retrofit retrofit = null;
 
     public static Retrofit getClient(){
