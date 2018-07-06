@@ -1,103 +1,65 @@
 package com.example.thando.qvaya.AdminDriver;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.thando.qvaya.R;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.regex.*;
+
 public class AdminCreateDriver extends AppCompatActivity {
 
-    private EditText firstnametxt;
-    private EditText lastnametxt;
-    private EditText usernametxt;
-    private EditText cellnumbertxt;
-    private EditText passwordtxt;
-    private AppCompatButton btnCreateDriver;
+    private TextInputLayout  fName;
+    private TextInputLayout  sName;
+    private TextInputLayout  cellNum;
+    private TextInputLayout  email;
+    private TextInputLayout  homeAddress;
+    private TextInputLayout  age;
+    private Spinner sp,genderSp;
 
+    private  static  final String REGISTER_URL ="https://qvayaapp.000webhostapp.com/Wonder/driverInsert.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_create_driver);
-        firstnametxt = findViewById(R.id.FirstNameTxt);
+        fName = findViewById(R.id.name_in_layout);
+        sName = findViewById(R.id.surname_in_layout);
+        cellNum = findViewById(R.id.cellNum_in_layout);
 
-        cellnumbertxt =  findViewById(R.id.CellNumbertxt);
-        passwordtxt = findViewById(R.id.passwordtxt);
-
-        InputFilter filter = new InputFilter() {
-            public CharSequence filter(CharSequence source, int start, int end,
-                                       Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
-                        Toast.makeText(AdminCreateDriver.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
-                        return "";
-                    }
-                }
-                return null;
-            }
-
-        };
-
-        firstnametxt.setFilters(new InputFilter[] { filter });
+        email   = findViewById(R.id.email_in_layout);
+        homeAddress = findViewById(R.id.address_in_layout);
+        age = findViewById(R.id.Age_in_layout);
+        sp = (Spinner) findViewById(R.id.spinner7);
+        genderSp = findViewById(R.id.spinner7);
 
 
-        //-----------
-        lastnametxt = findViewById(R.id.LastNametxt);
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Select-Gender");
+        list.add("Female");
+        list.add("Male");
 
-        InputFilter filter2 = new InputFilter() {
-            public CharSequence filter(CharSequence source, int start, int end,
-                                       Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
-                        Toast.makeText(AdminCreateDriver.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
-                        return "";
-                    }
-                }
-                return null;
-            }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this ,android.R.layout.simple_spinner_dropdown_item,list);
 
-        };
-
-        lastnametxt.setFilters(new InputFilter[] { filter2 });
+        sp.setAdapter(adapter);
 
 
-
-        //--------------
-
-
-
-        usernametxt = findViewById(R.id.userNameTxt);
-
-        InputFilter filter3 = new InputFilter() {
-            public CharSequence filter(CharSequence source, int start, int end,
-                                       Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
-                        Toast.makeText(AdminCreateDriver.this, "Invalid Input \n Letters Only!", Toast.LENGTH_SHORT).show();
-                        return "";
-                    }
-                }
-                return null;
-            }
-
-        };
-
-        usernametxt.setFilters(new InputFilter[] { filter3 });
-
-        //-------------
-
-
-
-        //------------
 
 
 
@@ -105,118 +67,238 @@ public class AdminCreateDriver extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 startActivity(new Intent(view.getContext(), AdminHome.class));
+
             }
         });
     }
 
+    private void registerDriver(){
+        String name = fName.getEditText().getText().toString().trim();
+        String sname = sName.getEditText().getText().toString().trim();
+        String cellPhone = cellNum.getEditText().getText().toString().trim();
+        String Email    = email.getEditText().getText().toString().trim();
+        String address  = homeAddress.getEditText().getText().toString().trim();
+        String Age      = age.getEditText().getText().toString().trim();
+        String Gender   = sp.getSelectedItem().toString().trim();
+
+        Calendar cal    = Calendar.getInstance();
+        int year        = cal.get(Calendar.YEAR);
+
+        String jobType  = "Driver";
+
+        register(name,sname,cellPhone,Email,address,Age,Gender,year,jobType);
+
+    }
+
+    public void register(String name,String sname,String cellPhone,String Email,String address,String Age,String Gender,int year,String jobType){
+        String urlDriver = "?name="+name+"&sname="+sname+"&cellPhone="+cellPhone+"&Email="+Email+"&address="+address+"&Age="+Age+"&Gender="+Gender+"&year="+year+"&jobType="+jobType;
+
+        class RegisterDriver extends AsyncTask<String,Void,String>{
 
 
-    public void CreateDriverAdminBTN(View view) {
+            ProgressDialog loading;
 
-        boolean error = false;
+            @Override
+            protected void onPreExecute(){
+                super.onPreExecute();
+                loading = ProgressDialog.show(AdminCreateDriver.this,"Please wait",null,true,true);
+                // Toast.makeText(getApplicationContext(),"Driver created", Toast.LENGTH_SHORT).show();
 
-        if(cellnumbertxt.getText().toString().length() < 10)
-        {
-            error = true;
-            cellnumbertxt.setError("Invalid Phone Number");
-        }
-        if(firstnametxt.getText().toString().isEmpty())
-        {
-            error = true;
-            firstnametxt.setError("Whats your first name?");
-        }
-        if(lastnametxt.getText().toString().isEmpty())
-        {
-            error = true;
-            lastnametxt.setError("Whats your last name?");
-        }
-        if(passwordtxt.getText().toString().length() < 5)
-        {
-            error = true;
-            passwordtxt.setError("Enter password");
-        }
-        if(usernametxt.getText().toString().isEmpty())
-        {
-            error = true;
-            usernametxt.setError("Enter User Name");
-        }
-        if(!error)
-        {
-            Toast.makeText(this, "Driver created", Toast.LENGTH_SHORT).show();
-            firstnametxt.getText().clear();
-            lastnametxt.getText().clear();
-            usernametxt.getText().clear();
-            cellnumbertxt.getText().clear();
-            passwordtxt.getText().clear();
+                loading.setTitle("Creating Driver");
+                loading.setMessage("Please wait..");
+                loading.show();
 
-        } else {
+                Runnable progressRunnable = new Runnable() {
 
+                    @Override
+                    public void run() {
+                        loading.cancel();
+                        Toast.makeText(getApplicationContext(),"Driver Registration done!", Toast.LENGTH_SHORT).show();
+                    }
+                };
 
+                Handler pdCanceller = new Handler();
+                pdCanceller.postDelayed(progressRunnable, 3000);
+            }
 
+            @Override
+            protected void onPostExecute(String s){
+                super.onPostExecute(s);
+                //  Toast.makeText(getApplicationContext(),"Internet Connection error.", Toast.LENGTH_LONG).show();
 
-            if(firstnametxt.getText().toString().isEmpty())
-            {
-                firstnametxt.requestFocus();
-                if(firstnametxt.requestFocus()) {
-                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                String s = params[0];
+                BufferedReader bufferReader = null;
+
+                try {
+                    URL url = new URL(REGISTER_URL+s);
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    bufferReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String result;
+                    result = bufferReader.readLine();
+
+                    //Toast.makeText(getApplicationContext(),"Try and catch", Toast.LENGTH_LONG).show();
+                    return result;
+
+                }
+                catch (Exception e)
+                {
+                    return null;
                 }
             }
 
+        }
+        RegisterDriver rd = new RegisterDriver();
+        rd.execute(urlDriver);
+
+    }
 
 
 
+    private  boolean validateSpinner(){
+        String Spnr = genderSp.getSelectedItem().toString();
+        if(Spnr.equalsIgnoreCase("Select-Gender")){
+            Toast.makeText(getApplicationContext(),"Please select gender!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    private boolean validateName(){
+        String name = fName.getEditText().getText().toString().trim();
+
+        if(name.isEmpty()) {
+            fName.setError("Field can't be empty!");
+            return false;
+        }
+        else{
+            fName.setError(null);
+            return true;
+        }
+
+    }
+
+    private boolean validateSurname(){
+        String surname = sName.getEditText().getText().toString().trim();
+
+        if(surname.isEmpty()){
+            sName.setError("Field can't be empty!");
+            return false;
+        }
+        else {
+            sName.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateEmail(){
+        String emailA = email.getEditText().getText().toString().trim();
+
+        if(emailA.isEmpty()){
+            email.setError("Field can't be empty!");
+            return false;
+        }
+        else {
+            email.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateCellNum(){
+        String cell = cellNum.getEditText().getText().toString().trim();
+
+        if(cell.isEmpty()){
+            cellNum.setError("Field can't be empty!");
+            return false;
+        }
+        else
+        if(cell.length()>10 || cell.length()<10){
+            cellNum.setError("Cell phone number should contain 10 digits");
+            return false;
+        }
+        else {
+            cellNum.setError(null);
+            return true;
+        }
+    }
+    private boolean validateAddress(){
+        String address = homeAddress.getEditText().getText().toString().trim();
+
+        if(address.isEmpty()){
+            homeAddress.setError("Field can't be empty!");
+            return false;
+        }
+        else {
+            homeAddress.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateAge(){
+        String AgeInput = age.getEditText().getText().toString().trim();
+
+        if(AgeInput.isEmpty()){
+            age.setError("Field can't be empty!");
+            return false;
+        }
+        else
+        if (AgeInput.length()>2 || (Integer.parseInt(AgeInput))>80){
+            age.setError("Sorry we only hire drivers who are 80 years old and less!");
+            return false;
+        }
+        else{
+            age.setError(null);
+            return true;
+        }
+    }
+    public boolean emailValidator(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public void btnSubmit(View view) {
+        String emailA = email.getEditText().getText().toString().trim();
 
 
-            if(lastnametxt.getText().toString().isEmpty())
-            {
-                lastnametxt.requestFocus();
-                if(lastnametxt.requestFocus()) {
-                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                }
-            }
+        if(emailValidator(emailA)){
+            email.setError(null);
+        }
+        else
+        if(emailA.isEmpty()){
+            email.setError("Field can't be empty");
+        }
+        else
+        {
 
+            email.setError("Invalid email!");
+        }
 
-
-            if(usernametxt.getText().toString().isEmpty())
-            {
-                usernametxt.requestFocus();
-                if(usernametxt.requestFocus()) {
-                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                }
-            }
-
-
-
-
-
-            if(passwordtxt.getText().toString().length() < 5||passwordtxt.getText().toString().isEmpty())
-            {
-                passwordtxt.setError("Invalid Must Have 5 digits");
-                passwordtxt.requestFocus();
-                if(passwordtxt.requestFocus()) {
-                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                }
-            }
-
-
-
-            if(cellnumbertxt.getText().toString().length() < 10 || cellnumbertxt.getText().toString().isEmpty())
-            {
-                cellnumbertxt.setError("Invalid Must Have 10 digits");
-                cellnumbertxt.requestFocus();
-                if(cellnumbertxt.requestFocus()) {
-                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                }
-            }
+        if( !(validateAge()) | !(validateAddress()) | !(validateCellNum()) | !(validateName()) | !(validateSurname()) | !(validateSpinner())){
+            //emailValidator(emailA);
+            validateAge();
+            validateAddress();
+            validateCellNum();
+            validateName();
+            validateSurname();
+            validateSpinner();
+        }
+        else{
+            registerDriver();
 
         }
     }
 
-    private void checkRequiredFields() {
-        if (!firstnametxt.getText().toString().isEmpty() && !lastnametxt.getText().toString().isEmpty() && !usernametxt.getText().toString().isEmpty()) {
-            btnCreateDriver.setEnabled(true);
-        } else {
-            btnCreateDriver.setEnabled(false);
-        }
-    }
+
+
+
+
 }
