@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.thando.qvaya.R;
 
 public class AdminDeleteDriver extends AppCompatActivity {
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
