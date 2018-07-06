@@ -18,12 +18,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.thando.qvaya.AdminDriver.AdminHome;
-import com.example.thando.qvaya.AdminDriver.AlbumsAdapterReadBusCo;
+import com.example.thando.qvaya.AdminDriver.AdminReadDriver;
+import com.example.thando.qvaya.AdminDriver.AlbumsAdapter;
 import com.example.thando.qvaya.R;
-import com.example.thando.qvaya.api.ClientBusCo;
-import com.example.thando.qvaya.api.ServiceBusCo;
-import com.example.thando.qvaya.model.AlbumReadBusCo;
-import com.example.thando.qvaya.model.AlbumsResponseReadBusCo;
+import com.example.thando.qvaya.api.Client;
+import com.example.thando.qvaya.api.Service;
+import com.example.thando.qvaya.model.Album;
+import com.example.thando.qvaya.model.AlbumsResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +37,9 @@ import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
 public class AdminReadCoordinator extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private AlbumsAdapterReadBusCo adapter;
-    private List<AlbumReadBusCo> albumList;
-    private AlbumReadBusCo album;
+    private AlbumsAdapter adapter;
+    private List<Album> albumList;
+    private Album album;
     ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,7 +155,7 @@ public class AdminReadCoordinator extends AppCompatActivity {
 
     private void initViews(){
         pd = new ProgressDialog(this);
-        pd.setMessage("Fetching Bus Co-ordinators...");
+        pd.setMessage("Fetching Drivers...");
         pd.setCancelable(false);
         pd.show();
 
@@ -163,7 +164,7 @@ public class AdminReadCoordinator extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
-        adapter = new AlbumsAdapterReadBusCo(this, albumList);
+        adapter = new AlbumsAdapter(this, albumList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -176,21 +177,21 @@ public class AdminReadCoordinator extends AppCompatActivity {
 
     private void loadJSON(){
         try{
-            ClientBusCo Client = new ClientBusCo();
-            ServiceBusCo apiService =
-                    Client.getClient().create(ServiceBusCo.class);
-            Call<AlbumsResponseReadBusCo> call = apiService.getAlbums();
-            call.enqueue(new Callback<AlbumsResponseReadBusCo>() {
+            Client Client = new Client();
+            Service apiService =
+                    Client.getClient().create(Service.class);
+            Call<AlbumsResponse> call = apiService.getAlbums();
+            call.enqueue(new Callback<AlbumsResponse>() {
                 @Override
-                public void onResponse(Call<AlbumsResponseReadBusCo> call, Response<AlbumsResponseReadBusCo> response) {
-                    List<AlbumReadBusCo> items = response.body().getAlbums();
-                    recyclerView.setAdapter(new AlbumsAdapterReadBusCo(getApplicationContext(), items));
+                public void onResponse(Call<AlbumsResponse> call, Response<AlbumsResponse> response) {
+                    List<Album> items = response.body().getAlbums();
+                    recyclerView.setAdapter(new AlbumsAdapter(getApplicationContext(), items));
                     recyclerView.smoothScrollToPosition(0);
                     pd.hide();
                 }
 
                 @Override
-                public void onFailure(Call<AlbumsResponseReadBusCo> call, Throwable t) {
+                public void onFailure(Call<AlbumsResponse> call, Throwable t) {
                     Log.d("Error", t.getMessage());
                     Toast.makeText(AdminReadCoordinator.this, "Error Fetching Data!", Toast.LENGTH_SHORT).show();
                     pd.hide();

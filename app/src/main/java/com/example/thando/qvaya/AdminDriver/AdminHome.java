@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import com.example.thando.qvaya.AdminCoordinator.BusCoordinatorAdminFragment;
 import com.example.thando.qvaya.R;
 import com.example.thando.qvaya.SectionsPageAdapter;
-//TODO
+
 public class AdminHome extends AppCompatActivity {
 
     private static final String TAG = "AdminHome";
@@ -25,6 +25,7 @@ public class AdminHome extends AppCompatActivity {
     CardView mycard ;
     Intent i ;
     LinearLayout ll;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

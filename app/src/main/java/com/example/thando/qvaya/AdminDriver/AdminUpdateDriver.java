@@ -1,469 +1,144 @@
 package com.example.thando.qvaya.AdminDriver;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.support.design.widget.*;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
-import com.example.thando.qvaya.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.util.regex.*;
-import java.util.ArrayList;
+        import android.content.Intent;
+        import android.support.design.widget.FloatingActionButton;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.text.InputFilter;
+        import android.text.Spanned;
+        import android.view.View;
+        import android.view.WindowManager;
+        import android.widget.EditText;
+        import android.widget.Toast;
+        import com.example.thando.qvaya.R;
 
 
-public class AdminUpdateDriver extends AppCompatActivity implements Spinner.OnItemSelectedListener{
-    private TextInputLayout surname;
-    private TextInputLayout email;
-    private TextInputLayout Age_in;
-    private TextInputLayout cellNum_in;
-    private TextInputLayout address_in;
-    private TextInputLayout Job_in;
-    private TextInputLayout Year_in;
-    private TextInputLayout name_in;
-    private Spinner  sGender;
-    private String empNum;
-    private Spinner eID;
-    private ArrayList<String> employees;
-    private JSONArray result;
-    private ProgressDialog loading;
-    private static final String REGISTER_URL = "https://qvayaapp.000webhostapp.com/Wonder/updateDriver.php";
 
+public class AdminUpdateDriver extends AppCompatActivity {
+    private EditText firstnametxt;
+    private EditText lastnametxt;
+    private EditText usernametxt;
+    private EditText cellnumbertxt;
+    private EditText passwordtxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_update_driver);
+        firstnametxt = findViewById(R.id.FirstNameTxt);
+        cellnumbertxt =  findViewById(R.id.CellNumbertxt);
+        passwordtxt = findViewById(R.id.passwordtxt);
 
-        surname =  findViewById(R.id.surname_in_layout);
-        name_in = findViewById(R.id.name_in_layout);
-        email   = findViewById(R.id.email_in_layout);
-        Age_in = findViewById(R.id.Age_in_layout);
-        cellNum_in = findViewById(R.id.cellNum_in_layout);
-        address_in = findViewById(R.id.address_in_layout);
-        Job_in  = findViewById(R.id.Job_in_layout);
-        Year_in  = findViewById(R.id.Year_in_layout);
-        sGender = (Spinner) findViewById(R.id.spGender);
-
-        ArrayList<String> list = new ArrayList<>();
-        list.add("Select-Gender");
-        list.add("Female");
-        list.add("Male");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this ,android.R.layout.simple_spinner_dropdown_item,list);
-
-        sGender.setAdapter(adapter);
-
-        //Initializing the ArrayList
-        employees = new ArrayList<String>();
-
-        //Initializing Spinner
-        eID = (Spinner) findViewById(R.id.empID);
-
-        //Adding an Item Selected Listener to our Spinner
-        //As we have implemented the class Spinner.OnItemSelectedListener to this class iteself we are passing this to setOnItemSelectedListener
-        eID.setOnItemSelectedListener(this);
-
-        //Initializing TextViews
-
-
-        //This method will fetch the data from the URL
-        getData();
-
-
-
-
-
-
-//        FloatingActionButton floatingActionButton=(FloatingActionButton)findViewById(R.id.fab);
-//        floatingActionButton.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View view){
-//                startActivity(new Intent(view.getContext(), AdminHome.class));
-//            }
-//        });
-    }
-    public void btnSubmit(View view){
-
-        // updateDriver driver = new updateDriver();
-
-        String name = name_in.getEditText().getText().toString().trim();
-        String sname = surname.getEditText().getText().toString().trim();
-        String em   = email.getEditText().getText().toString().trim();
-        String age  = Age_in.getEditText().getText().toString().trim();
-        String cell = cellNum_in.getEditText().getText().toString().trim();
-        String address = address_in.getEditText().getText().toString().trim();
-        String job     = Job_in.getEditText().getText().toString().trim();
-        String year    = Year_in.getEditText().getText().toString().trim();
-        String gender  = sGender.getSelectedItem().toString().trim();
-        String empID   = eID.getSelectedItem().toString().trim();
-
-        int yr = Integer.parseInt(year);
-
-        // register(name,sname,cell,em,address,age,gender,yr,empID);
-        updateDriver backgroundWorker = new updateDriver(this);
-        backgroundWorker.execute(empID,name,sname,gender,em,age,address,job,cell,year);
-
-
-
-        loading = ProgressDialog.show(AdminUpdateDriver.this,"Please wait",null,true,true);
-        // Toast.makeText(getApplicationContext(),"Driver created", Toast.LENGTH_SHORT).show();
-
-        loading.setTitle("UPDATING DRIVER");
-        loading.setMessage("Please wait..");
-        loading.show();
-
-        Runnable progressRunnable = new Runnable() {
-
-            @Override
-            public void run() {
-                loading.cancel();
-                // Toast.makeText(getApplicationContext(),"Driver Registration done!", Toast.LENGTH_SHORT).show();
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
+                        Toast.makeText(AdminUpdateDriver.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
+                        return "";
+                    }
+                }
+                return null;
             }
         };
 
-        Handler pdCanceller = new Handler();
-        pdCanceller.postDelayed(progressRunnable, 3000);
+        firstnametxt.setFilters(new InputFilter[] { filter });
 
-        //Toast.makeText(getApplicationContext()," "+name+" "+sname+" "+cell+" "+em+" "+address+" "+age+" "+gender+" "+yr+" "+job+" "+empID, Toast.LENGTH_SHORT).show();
+        //-----------
+        lastnametxt = findViewById(R.id.LastNametxt);
 
-
-
-
-    }
-    private void getData(){
-        //Creating a string request
-        StringRequest stringRequest = new StringRequest(ConfigWonder.DATA_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        JSONObject j = null;
-                        try {
-                            //Parsing the fetched Json String to JSON Object
-                            j = new JSONObject(response);
-
-                            //Storing the Array of JSON String to our JSON Array
-                            result = j.getJSONArray(ConfigWonder.JSON_ARRAY);
-
-                            //Calling method getStudents to get the students from the JSON Array
-                            getEmployees(result);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+        InputFilter filter2 = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (!Character.isLetter(source.charAt(i))) { // Accept only letter & digits ; otherwise just return
+                        Toast.makeText(AdminUpdateDriver.this, "Invalid Input \nLetters Only!", Toast.LENGTH_SHORT).show();
+                        return "";
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-
-        //Creating a request queue
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-        //Adding request to the queue
-        requestQueue.add(stringRequest);
-    }
-
-    private void getEmployees(JSONArray j){
-        //Traversing through all the items in the json array
-        for(int i=0;i<j.length();i++){
-            try {
-                //Getting json object
-                JSONObject json = j.getJSONObject(i);
-
-                //Adding the name of the student to array list
-                employees.add(json.getString(ConfigWonder.TAG_EmpID));
-            } catch (JSONException e) {
-                e.printStackTrace();
+                }
+                return null;
             }
-        }
 
-        //Setting adapter to show the items in the spinner
-        eID.setAdapter(new ArrayAdapter<String>(AdminUpdateDriver.this, android.R.layout.simple_spinner_dropdown_item, employees));
+        };
+
+        lastnametxt.setFilters(new InputFilter[] { filter2 });
+
+        FloatingActionButton floatingActionButton=(FloatingActionButton)findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                startActivity(new Intent(view.getContext(), AdminHome.class));
+            }
+        });
     }
 
-    private String getName(int position){
-        String name="";
-        try {
-            //Getting object of given index
-            JSONObject json = result.getJSONObject(position);
+    public void UpdateDriverAdminBTN(View view) {
 
-            //Fetching name from that object
-            name = json.getString(ConfigWonder.TAG_NAME);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //Returning the name
-        return name;
-    }
-    //Doing the same with this method as we did with getName()
-    private String getSurname(int position){
-        String sname="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            sname = json.getString(ConfigWonder.TAG_SNAME);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return sname;
-    }
 
-    private String getGender(int position){
-        String gender="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            gender = json.getString(ConfigWonder.TAG_GEN);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return gender;
-    }
+        boolean error = false;
 
-    private String getEmail(int position){
-        String email="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            email = json.getString(ConfigWonder.TAG_EMAIL);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return email;
-    }
-    private String getAge(int position){
-        String age="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            age = json.getString(ConfigWonder.TAG_AGE);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return age;
-    }
-
-    private String getAddress(int position){
-        String address="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            address = json.getString(ConfigWonder.TAG_HOMEADD);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return address;
-    }
-
-    private String getJobType(int position){
-        String jType="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            jType = json.getString(ConfigWonder.TAG_JTYPLE);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jType;
-    }
-    private String getCellNumber(int position){
-        String cell="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            cell = json.getString(ConfigWonder.TAG_CELLNU);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return cell;
-    }
-
-    private String getYear(int position){
-        String year="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            year = json.getString(ConfigWonder.TAG_YEARST);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return year;
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //Setting the values to textviews for a selected item
-//        textViewName.setText(getName(position));
-//        textViewCourse.setText(getCourse(position));
-//        textViewSession.setText(getSession(position));
-
-        name_in.getEditText().setText(getName(position));
-        email.getEditText().setText(getEmail(position));
-        Age_in.getEditText().setText(getAge(position));
-        cellNum_in.getEditText().setText(getCellNumber(position));
-        address_in.getEditText().setText(getAddress(position));
-        Job_in.getEditText().setText(getJobType(position));
-        Year_in.getEditText().setText(getYear(position));
-        surname.getEditText().setText(getSurname(position));
-
-        if(getGender(position).equalsIgnoreCase("Male"))
+        if(cellnumbertxt.getText().toString().length() < 10)
         {
-            sGender.setSelection(2);
+            error = true;
+            cellnumbertxt.setError("Invalid Phone Number");
         }
-        else
-        if(getGender(position).equalsIgnoreCase("Female")){
-            sGender.setSelection(1);
+        if(firstnametxt.getText().toString().isEmpty())
+        {
+            error = true;
+            firstnametxt.setError("Whats your first name?");
+        }
+        if(lastnametxt.getText().toString().isEmpty())
+        {
+            error = true;
+            lastnametxt.setError("Whats your last name?");
+        }
+        if(passwordtxt.getText().toString().length() < 5)
+        {
+            error = true;
+            passwordtxt.setError("Enter password");
         }
 
-    }
+        if(!error)
+        {
+            Toast.makeText(this, "Driver Updated", Toast.LENGTH_SHORT).show();
+            firstnametxt.getText().clear();
+            lastnametxt.getText().clear();
+            cellnumbertxt.getText().clear();
+            passwordtxt.getText().clear();
 
-    //When no item is selected this method would execute
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        name_in.getEditText().setText("");
-        email.getEditText().setText("");
-        Age_in.getEditText().setText("");
-        cellNum_in.getEditText().setText("");
-        address_in.getEditText().setText("");
-        Job_in.getEditText().setText("");
-        Year_in.getEditText().setText("");
-        sGender.setSelection(0);
-    }
-
-    public void register(String name,String sname,String cellPhone,String Email,String address,String Age,String Gender,int year,String EmpID){
-        String urlDriver = "?name="+name+"&sname="+sname+"&cellPhone="+cellPhone+"&Email="+Email+"&address="+address+"&Age="+Age+"&Gender="+Gender+"&year="+year+"&empID="+EmpID;
-
-        class RegisterDriver extends AsyncTask<String,Void,String> {
-
-
-            ProgressDialog loading;
-
-            @Override
-            protected void onPreExecute(){
-                super.onPreExecute();
-                loading = ProgressDialog.show(AdminUpdateDriver.this,"Please wait",null,true,true);
-                // Toast.makeText(getApplicationContext(),"Driver created", Toast.LENGTH_SHORT).show();
-
-                loading.setTitle("UPDATING DRIVER");
-                loading.setMessage("Please wait..");
-                loading.show();
-
-                Runnable progressRunnable = new Runnable() {
-
-                    @Override
-                    public void run() {
-                        loading.cancel();
-                        // Toast.makeText(getApplicationContext(),"Driver Registration done!", Toast.LENGTH_SHORT).show();
-                    }
-                };
-
-                Handler pdCanceller = new Handler();
-                pdCanceller.postDelayed(progressRunnable, 3000);
-            }
-
-            @Override
-            protected void onPostExecute(String s){
-                super.onPostExecute(s);
-                //  Toast.makeText(getApplicationContext(),"Internet Connection error.", Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(),"hey postExecute", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            protected String doInBackground(String... params) {
-                String s = params[0];
-                BufferedReader bufferReader = null;
-
-                try {
-                    URL url = new URL(REGISTER_URL+s);
-                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-                    bufferReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    String result;
-                    result = bufferReader.readLine();
-                    //Toast.makeText(getApplicationContext(),"Try And catch", Toast.LENGTH_SHORT).show();
-
-                    return result;
-
-                }
-                catch (Exception e)
-                {
-                    return null;
+        } else {
+            if(firstnametxt.getText().toString().isEmpty())
+            {
+                firstnametxt.requestFocus();
+                if(firstnametxt.requestFocus()) {
+                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 }
             }
 
-        }
-        RegisterDriver rd = new RegisterDriver();
-        rd.execute(urlDriver);
+            if(lastnametxt.getText().toString().isEmpty())
+            {
+                lastnametxt.requestFocus();
+                if(lastnametxt.requestFocus()) {
+                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
 
-    }
+            if(passwordtxt.getText().toString().length() < 5||passwordtxt.getText().toString().isEmpty())
+            {
+                passwordtxt.setError("Invalid Must Have 5 digits");
+                passwordtxt.requestFocus();
+                if(passwordtxt.requestFocus()) {
+                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
 
-    public boolean validateName(){
-        String fname = name_in.getEditText().getText().toString().trim();
-
-        if(fname.isEmpty()){
-            return false;
-        }
-        else
-            return true;
-    }
-
-    public boolean validateSurname(){
-        String lname = surname.getEditText().getText().toString().trim();
-
-        if(lname.isEmpty()){
-            return false;
-        }
-        else
-            return true;
-    }
-
-    public boolean validateGender(){
-        String gndr = sGender.getSelectedItem().toString().trim();
-
-        if(gndr.equalsIgnoreCase("Select-Gender")){
-
-            return false;
-        }
-        else
-            return true;
-    }
-
-    public boolean emailValidator(String email)
-    {
-        Pattern pattern;
-        Matcher matcher;
-        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    public boolean validateCellNumber(){
-        String num = cellNum_in.getEditText().getText().toString().trim();
-
-        if(cellNum_in.getEditText().getText().toString().trim().length() < 10){
-            cellNum_in.setError("phone number cannot contain numbers less then 10");
-            return  false;
-        }
-        else{
-
-
-            return true;
+            if(cellnumbertxt.getText().toString().length() < 10 || cellnumbertxt.getText().toString().isEmpty())
+            {
+                cellnumbertxt.setError("Invalid Must Have 10 digits");
+                cellnumbertxt.requestFocus();
+                if(cellnumbertxt.requestFocus()) {
+                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
         }
     }
-
 
 }
-

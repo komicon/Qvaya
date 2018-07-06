@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Toast;
 
 
 import com.example.thando.qvaya.R;
-import com.example.thando.qvaya.pushNitificationRealocatedriver.ReallocateDriverDelatAlocate;
+
 
 
 public class DriverHome extends AppCompatActivity {
@@ -26,23 +25,10 @@ public class DriverHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( DriverHome.this, DriverTransit.class);
-
-                String username= getIntent().getStringExtra("langa");
-                intent.putExtra("langa",username);
-
-
-               // Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
-
-
-
-
-
             }
         });
-        String value = getIntent().getStringExtra("langa");
 
-        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
         //--------
 
         CardViewDriverProfile =  findViewById(R.id.DriverProfileCV);

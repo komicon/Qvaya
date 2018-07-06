@@ -1,310 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.thando.qvaya.AdminCoordinator.AdminUpdateCoordinatorUpCoordXul"
-        tools:layout_editor_absoluteY="25dp">
+    tools:context="com.example.thando.qvaya.AdminCoordinator.AdminUpdateCoordinator"
+    tools:layout_editor_absoluteY="25dp">
 
 
-        <Spinner
-            android:id="@+id/JobTypeSpn"
-            android:layout_width="260dp"
-            android:layout_height="29dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp" />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout12"
+        android:layout_width="0dp"
 
-        <!-- <android.support.design.widget.TextInputLayout
-             android:id="@+id/textInputLayout2"
-             android:layout_width="260dp"
-             android:layout_height="45dp"
-             android:hint="Age"
-             tools:layout_editor_absoluteX="50dp"
-             tools:layout_editor_absoluteY="248dp"
-             tools:layout_marginBottom="4dp"
-             tools:layout_marginTop="4dp">
+        android:layout_height="76dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="200dp"
+        android:hint="Last Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-             <EditText
-                 android:id="@+id/agetxt"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:layout_weight="1"
-                 android:ems="10"
-                 android:inputType="number" />
-         </android.support.design.widget.TextInputLayout>-->
-
-        <android.support.design.widget.TextInputLayout
-
-            android:id="@+id/textInputLayout2"
-            android:layout_width="260dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:hint="Age"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TextInputLayout"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
-
-            <EditText
-                android:id="@+id/agetxt"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number"
-                android:maxLength="2" />
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout16"
-            android:layout_width="260dp"
-
-            android:layout_height="45dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:hint="last_name"
-            app:layout_constraintBottom_toTopOf="@+id/spnGender"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout13"
-            tools:hint="Last Name"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
-
-            <EditText
-                android:id="@+id/LastNametxt"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:filterTouchesWhenObscured="true"
-                android:inputType="textPersonName" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout13"
-            android:layout_width="260dp"
-            android:layout_height="44dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnEmpID"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
-
-            <EditText
-                android:id="@+id/FirstNameTxt"
-                android:layout_width="261dp"
-                android:layout_height="39dp"
-                android:hint="First Name"
-                android:inputType="textFilter|textPersonName" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout14"
-            android:layout_width="260dp"
-            android:layout_height="44dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:hint="cell_number"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout18"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/JobTypeSpn"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
-
-            <EditText
-                android:id="@+id/CellNumbertxt"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:inputType="number"
-                android:maxLength="10" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <!--<android.support.design.widget.TextInputLayout
-            android:id="@+id/passwords"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="149dp"
-            android:layout_marginTop="149dp"
-            android:hint="@string/password"
-            android:inputType="numberPassword"
-            app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="@+id/TextInputLayout"
-            app:layout_constraintStart_toStartOf="@+id/TextInputLayout"
-            app:layout_constraintTop_toTopOf="@+id/textInputLayout13"
-            app:passwordToggleEnabled="true">
-
-            <EditText
-                android:id="@+id/passwordtxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:maxLength="5" />
-        </android.support.design.widget.TextInputLayout>-->
-
-        <android.support.v7.widget.AppCompatButton
-
-            android:id="@+id/CreateDriverAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginBottom="39dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginLeft="92dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="7dp"
-            android:onClick="UpdateCoordinatorAdminBTN"
-            android:text="update_coordinator"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/darkgrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fab"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout18" />
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/LastNametxt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginRight="28dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:backgroundTint="@color/cardview_light_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="?android:attr/homeAsUpIndicator" />
+            android:filterTouchesWhenObscured="true"
+            android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spnEmpID"
-            android:layout_width="260dp"
-            android:layout_height="29dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout13"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp" />
+    </android.support.design.widget.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spnGender"
-            android:layout_width="260dp"
-            android:layout_height="29dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            app:layout_constraintBottom_toTopOf="@+id/TextInputLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout16"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp" />
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/TextInputLayout"
-            android:layout_width="260dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:hint="Drivers licence"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnGender"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
-
-            <EditText
-                android:id="@+id/Emailtxt"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_weight="1"
-                android:filterTouchesWhenObscured="true"
-                android:inputType="textEmailAddress"
-                android:maxLength="12" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout3"
-            android:layout_width="260dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:hint="Address"
-            app:layout_constraintBottom_toTopOf="@+id/JobTypeSpn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
-
-            <EditText
-                android:id="@+id/Adresstxt"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPostalAddress" />
-        </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout13"
+        android:layout_width="0dp"
 
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout18"
-            android:layout_width="260dp"
-            android:layout_height="44dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:hint="Year Started"
-            app:layout_constraintBottom_toTopOf="@+id/CreateDriverAdmin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout14"
-            tools:layout_marginBottom="4dp"
-            tools:layout_marginTop="4dp">
+        android:layout_height="76dp"
+        android:layout_marginBottom="196dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="196dp"
+        android:hint="First Name"
+        app:layout_constraintBottom_toBottomOf="@+id/CreateDriverAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout14">
 
-            <EditText
-                android:id="@+id/YearStarttxt"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number"
-                android:maxLength="4" />
-        </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:id="@+id/FirstNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textFilter|textPersonName"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout14"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="98dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="102dp"
+        android:hint="Cell Number"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/CellNumbertxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="10" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/passwords"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="38dp"
+        android:hint="Password"
+        android:inputType="numberPassword"
+        app:layout_constraintBottom_toTopOf="@+id/CreateDriverAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/passwordtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:maxLength="5" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+
+        android:id="@+id/CreateDriverAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="UpdateCoordinatorAdminBTN"
+        android:text="Update Coordinator"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/darkgrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fab" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="?android:attr/homeAsUpIndicator" />
 
-</android.support.v4.widget.NestedScrollView>
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="344dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout14"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -181,13 +181,13 @@
                     android:layout_height="64dp"
 
                     android:padding="10dp"
-                    android:src="@drawable/ic_airport_shuttle_black_48dp" />
+                    android:src="@drawable/ic_settings_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="MAP"
+                    android:text="Settings"
                     android:textStyle="bold" />
 
                 <View
@@ -201,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Find My Bus"
+                    android:text="Set Settings"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Toast;
 
 
 import com.example.thando.qvaya.R;
@@ -13,32 +12,27 @@ import com.example.thando.qvaya.R;
 import static android.app.PendingIntent.getActivity;
 
 public class StudentHome extends AppCompatActivity {
-    private CardView CardViewStudentMap ;
+    private CardView CardViewSetReminder;
     private CardView CardViewStudentProfile;
     private CardView CardViewStudentViewRes;
     private CardView CardViewSettingsStudent;
     private CardView CardViewEvents;
-    String username = "";
-    public  static  String StudentNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
-        username = getIntent().getStringExtra("langa");
 
-        StudentNumber = username;
-        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
-        CardViewStudentMap =  findViewById(R.id.StudentSettingCV);
+        CardViewSetReminder =  findViewById(R.id.SetReminderStudentCV);
 
-        CardViewStudentMap.setOnClickListener(new View.OnClickListener() {
+        CardViewSetReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(StudentHome.this, MapsActivity.class);
+                Intent intent = new Intent(StudentHome.this, SetRiminder.class);
                 startActivity(intent);
             }
         });
+
         //--------
 
         CardViewStudentProfile =  findViewById(R.id.profileStudentCV);
@@ -63,7 +57,7 @@ public class StudentHome extends AppCompatActivity {
         });
 
         //-----------
-        CardViewSettingsStudent =  findViewById(R.id.SetReminderStudentCV);
+        CardViewSettingsStudent =  findViewById(R.id.StudentSettingCV);
 
         CardViewSettingsStudent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +66,7 @@ public class StudentHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         //-----------
         CardViewEvents =  findViewById(R.id.StudentEventsCV);

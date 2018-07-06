@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.thando.qvaya.AdminDriver.AdminHome;
 import com.example.thando.qvaya.R;
 
-public class StudentSetting extends AppCompatActivity {
+public class SetRiminder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_setting);
+        setContentView(R.layout.activity_set_riminder);
 
 
         FloatingActionButton floatingActionButton=(FloatingActionButton)findViewById(R.id.fab);
@@ -23,11 +24,10 @@ public class StudentSetting extends AppCompatActivity {
                 startActivity(new Intent(view.getContext(), StudentHome.class));
             }
         });
-
     }
 
     public void SetReminderStudentBTN(View view) {
 
-        Toast.makeText(this, "Settings Updated", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Reminder Set", Toast.LENGTH_SHORT).show();
     }
 }
