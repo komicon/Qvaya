@@ -58,6 +58,13 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
     private Spinner spin;
     private Spinner timeSpinner;
 
+    private JSONArray results4;
+    public String numPlate="";
+
+
+
+    private ArrayList<String> numberPlate;
+    private Spinner busSpinner;
     //An ArrayList for Spinner Items
     private ArrayList<String> students;
     private ArrayList<String> res;
@@ -107,7 +114,7 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
         students = new ArrayList<String>();
         res = new ArrayList<String>();
 
-
+        numberPlate = new ArrayList<String>();
 
         //Initializing Spinner
         spinner = (Spinner) view.findViewById(R.id.getFreeDrivers);
@@ -116,23 +123,16 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
         err = (TextView) view.findViewById(R.id.sumOfStudents);
 
         setItem = (Button) view.findViewById(R.id.AssignBusBTN);
-
-
-
-
-
-
+        busSpinner = (Spinner)view.findViewById(R.id.getFreeBuses);
         setItem.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
-
                                            sendToServer();
-
-
-                                           final String title = "**Qvaya**";
+                                           final String title = "*Qvaya*";
                                            final String message = "THE "+timeSpecificallySelected+" BUS HAS BEEN DISPATCHED FROM THE DEPOT TO "+nameOfRes;
                                            final String image = null;
-
+                                           //driverID = spinner.getSelectedItem().toString().trim();
+                                           sendToServer3(message,nameOfRes);
 
                                            // progressDialog.setMessage("Sending Push");
                                            //  progressDialog.show();
@@ -159,6 +159,7 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
                                                    params.put("message", message);
                                                    params.put("time",timeSpecificallySelected);
                                                    params.put("resname",nameOfRes);
+                                                   params.put("driverID",empnum);
 
                                                    if (!TextUtils.isEmpty(image))
                                                        params.put("image", image);
@@ -199,7 +200,7 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
         //This method will fetch the data from the URL
         getData();
         getData2();
-
+        getDataOfNumberPlate();
         return view;
     }
 
@@ -456,6 +457,9 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
 
                 break;
 
+            case R.id.getFreeBuses:
+                numPlate= busSpinner.getSelectedItem().toString();
+
 
 
         }
@@ -489,6 +493,7 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
                 params.put("empnum",empnum);
                 params.put("nameOfRes",nameOfRes);
                 params.put("timeSpecificallySelected",timeSpecificallySelected);
+                params.put("numberPlate",numPlate);
                 return params;
             }
         };
@@ -591,6 +596,93 @@ public class BusCoordinatorAssignBusesFragment extends Fragment implements Adapt
         //Adding request to the queue
         requestQueue.add(stringRequest);
     }
+    public void sendToServer3(final String message, final String nameOfRes){
+        RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        String url = "https://qvayaapp.000webhostapp.com/Lungcebo/getNotificationDetails.php";
+        StringRequest postRequest = new StringRequest (Request.Method.POST, url,
+                new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse (VolleyError error) {
+                        Log.d("ERROR", "error => " +error.toString());
+                    }
+                }
+        )   {
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("message",message);
+                params.put("resname",nameOfRes);
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
+
+    private void getDataOfNumberPlate() {
+
+        //Creating a string request
+        StringRequest stringRequest = new StringRequest(BusCoordConfigAssign.DATA_URL4,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject j = null;
+                        try {
+                            //Parsing the fetched Json String to JSON Object
+                            j = new JSONObject(response);
+
+                            //Storing the Array of JSON String to our JSON Array
 
 
+                            results4 = j.getJSONArray(BusCoordConfigAssign.JSON_ARRAY4);
+
+                            //Calling method getStudents to get the students from the JSON Array
+                            getNumberPlates(results4);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        //Creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
+    }
+
+    private void getNumberPlates(JSONArray j) {
+
+        //Traversing through all the items in the json array
+        for (int i = 0; i < j.length(); i++) {
+            try {
+                //Getting json object
+                JSONObject json = j.getJSONObject(i);
+
+                //Adding the name of the student to array list
+                numberPlate.add(json.getString(BusCoordConfigAssign.TAG_NumberPate));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ArrayAdapter<String> adapterComplaint = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, numberPlate);
+        adapterComplaint.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        busSpinner.setAdapter(adapterComplaint);
+
+        //Setting adapter to show the items in the spinner
+        //spinner.setAdapter(new ArrayAdapter<String>( getContext(),android.R.layout.simple_list_item_1, students));
+    }
 }

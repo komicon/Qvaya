@@ -2,6 +2,7 @@ package com.example.thando.qvaya.pushNitificationRealocatedriver;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +22,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.thando.qvaya.Driver.ConfigsHereXul;
+import com.example.thando.qvaya.NotificationAssign.EndPointsAssign;
+import com.example.thando.qvaya.NotificationAssign.MyVolleyAssign;
 import com.example.thando.qvaya.R;
 
 import org.json.JSONArray;
@@ -40,16 +43,19 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
     TextView txtViewDriver;
     Spinner driver;
     Spinner ress;
+    Spinner bus;
     Spinner times;
     TextView reasonof;
+    TextView oldBus;
     Button Reallocate;
     String username = "";
     private ProgressDialog progressDialog;
-   // TextView mm;
+    // TextView mm;
     TextView oldRess,oldTime;
 
     //An ArrayList for Spinner Items
     private ArrayList<String> students;
+    private ArrayList<String> buses;
     private ArrayList<String> res;
     private ArrayList<String> time;
 
@@ -59,7 +65,8 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
     private JSONArray result3;
     public String nameOfRes = "";
     public String empnum ="";
-  //  Context context;
+    public String bussnumm ="";
+    //  Context context;
     ProgressDialog pd1 ;
     AlertDialog alertDialog;
     public String timeSpecificallySelected ="";
@@ -88,6 +95,7 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
     String reasons= "";
     String prevRess = "";
     String prevTime = "";
+    String ibusi = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,79 +107,81 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
         reasons = getIntent().getStringExtra("email");
         String m = getIntent().getStringExtra("m");
 
-        txtViewDriver = findViewById(R.id.m);
+        txtViewDriver = findViewById(R.id.m3);
         txtViewDriver.setText(username);
         Reallocate = findViewById(R.id.btnReallocate);
 
         driver = findViewById(R.id.spnDriver);
         ress = findViewById(R.id.spnRess);
         times = findViewById(R.id.spnTime);
+        bus = findViewById(R.id.spnBus);
 
         oldRess = findViewById(R.id.txtvRess);
         oldTime = findViewById(R.id.txtvTime);
+        oldBus = findViewById(R.id.buss);
         reasonof =  findViewById(R.id.txtReason);
         students = new ArrayList<String>();
+        buses = new ArrayList<String>();
         res = new ArrayList<String>();
-      //  time = new ArrayList<String>();
+        //  time = new ArrayList<String>();
 
         //Adding an Item Selected Listener to our Spinner
         //As we have implemented the class Spinner.OnItemSelectedListener to this class iteself we are passing this to setOnItemSelectedListener
         driver.setOnItemSelectedListener(this);
         ress.setOnItemSelectedListener(this);
         times.setOnItemSelectedListener(this);
-
+        bus.setOnItemSelectedListener(this);
         helloTextView.setText(reasons);
 
         String type = "first";
         BackgroundWorkerDelatAlocate bkw = new BackgroundWorkerDelatAlocate(this);
         bkw.execute(type,username);
 
-              /// grab from database from database
-            try {
+        /// grab from database from database
+        try {
 
-             JSONObject jobj = new JSONObject(bkw.get());
+            JSONObject jobj = new JSONObject(bkw.get());
 
-             JSONArray jr =  jobj.getJSONArray("tripDetails");
+            JSONArray jr =  jobj.getJSONArray("tripDetails");
 
 
-                for(int i=0;i<jr.length();i++){
-                    try {
-                        //Getting json object
-                        JSONObject json = jr.getJSONObject(i);
+            for(int i=0;i<jr.length();i++){
+                try {
+                    //Getting json object
+                    JSONObject json = jr.getJSONObject(i);
 
-                        //Adding the name of the student to array list
-                        oldRess.setText(json.getString(ConfigsDelatAlocate.TAG_ResISNames));
+                    //Adding the name of the student to array list
+                    oldRess.setText(json.getString(ConfigsDelatAlocate.TAG_ResISNames));
 
-                        Toast.makeText(this,json.getString(ConfigsDelatAlocate.TAG_ResISNames),Toast.LENGTH_LONG).show();
-                        oldTime.setText(json.getString(ConfigsDelatAlocate.TAG_Time));
+                    // Toast.makeText(this,json.getString(ConfigsDelatAlocate.TAG_ResISNames),Toast.LENGTH_LONG).show();
+                    oldTime.setText(json.getString(ConfigsDelatAlocate.TAG_Time));
+                    oldBus.setText(json.getString(ConfigsDelatAlocate.TAG_BusOld));
+                    // Toast.makeText(this,json.getString(ConfigsDelatAlocate.TAG_Time),Toast.LENGTH_LONG).show();
+                    prevRess = json.getString(ConfigsDelatAlocate.TAG_ResISNames);
+                    prevTime = json.getString(ConfigsDelatAlocate.TAG_Time);
 
-                        // Toast.makeText(this,json.getString(ConfigsDelatAlocate.TAG_Time),Toast.LENGTH_LONG).show();
-                         prevRess = json.getString(ConfigsDelatAlocate.TAG_ResISNames);
-                         prevTime = json.getString(ConfigsDelatAlocate.TAG_Time);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
-                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
                 }
-
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-            // String result = getIntent().getStringExtra("result");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // String result = getIntent().getStringExtra("result");
         //This method will fetch the data from the URL
 
         getData();
         getData2();
-      //  getData0();
+        getData3();
 
-      //  getData0();
-       // Criteria();
+        //  getData0();
+        // Criteria();
 
     }
     private int getIndex(Spinner spinner, String myString){
@@ -258,6 +268,45 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
         //Adding request to the queue
         requestQueue.add(stringRequest);
     }
+
+    private void getData3(){
+
+        //Creating a string request
+        StringRequest stringRequest = new StringRequest(ConfigsDelatAlocate.DATA_URL3,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject j = null;
+                        try {
+                            //Parsing the fetched Json String to JSON Object
+                            j = new JSONObject(response);
+
+                            //Storing the Array of JSON String to our JSON Array
+
+
+                            result2 = j.getJSONArray(ConfigsDelatAlocate.JSON_ARRAY4);
+
+                            //Calling method getStudents to get the students from the JSON Array
+                            getBuss(result2);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        //Creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(getBaseContext().getApplicationContext());
+
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
+    }
+
     private void getStudents(JSONArray j){
 
         //Traversing through all the items in the json array
@@ -276,6 +325,29 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
         ArrayAdapter<String> adapterComplaint = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, students);
         adapterComplaint.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         driver.setAdapter(adapterComplaint);
+
+        //Setting adapter to show the items in the spinner
+        //spinner.setAdapter(new ArrayAdapter<String>( getContext(),android.R.layout.simple_list_item_1, students));
+    }
+
+    private void getBuss(JSONArray j){
+
+        //Traversing through all the items in the json array
+        for(int i=0;i<j.length();i++){
+            try {
+                //Getting json object
+                JSONObject json = j.getJSONObject(i);
+
+                //Adding the name of the student to array list
+                buses.add(json.getString(ConfigsDelatAlocate.TAG_Bus));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ArrayAdapter<String> adapterComplaint = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, buses);
+        adapterComplaint.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+        bus.setAdapter(adapterComplaint);
 
         //Setting adapter to show the items in the spinner
         //spinner.setAdapter(new ArrayAdapter<String>( getContext(),android.R.layout.simple_list_item_1, students));
@@ -425,6 +497,23 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
         //Returning the name
         return empnum;
     }
+
+    //Method to get Employee number of a particular position
+    private String getBussNumber(int position){
+
+        try {
+            //Getting object of given index
+            JSONObject json = result.getJSONObject(position);
+
+            //Fetching name from that object
+
+            bussnumm = bus.getSelectedItem().toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //Returning the name
+        return bussnumm;
+    }
     //Method to get Employee number of a particular position
     public String getResSelected(int position){
 
@@ -541,16 +630,19 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
 
-      switch (parent.getId()) {
-          case R.id.spnRess:
-              getResSelected(i);
+        switch (parent.getId()) {
+            case R.id.spnRess:
+                getResSelected(i);
 
-              break;
-          case R.id.spnDriver:
-              getEMployeeNumber(i);
+                break;
+            case R.id.spnDriver:
+                getEMployeeNumber(i);
 
-              break;
-      }
+                break;
+            case R.id.spnBus:
+                getBussNumber(i);
+                break;
+        }
 
     }
 
@@ -562,61 +654,38 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
 
         String type = "Update";
 
-       residence =  ress.getSelectedItem().toString();
-       residencetime = times.getSelectedItem().toString();
+        residence =  ress.getSelectedItem().toString();
+        residencetime = times.getSelectedItem().toString();
         dilayva = driver.getSelectedItem().toString();
         String reallo = reasonof.getText().toString();
-        String oldDriver = username;
+        ibusi = bus.getSelectedItem().toString();
+        final String oldDriver = username;
         BackgroundWorkerDelatAlocate backgroundWorkerDelatAlocate = new BackgroundWorkerDelatAlocate(this);
-        backgroundWorkerDelatAlocate.execute(type,oldDriver,dilayva,residencetime,residence,reallo);
+        backgroundWorkerDelatAlocate.execute(type,oldDriver,dilayva,residencetime,residence,reallo,ibusi);
 
-       // sendPush();
-        sendMultiplePush();
+        // sendPush();
+        //  sendMultiplePush();
+        //  Toast.makeText(getApplicationContext()," hhh"+ oldRess.getText().toString().substring(0,3),Toast.LENGTH_LONG).show();
         /// update spinner
-       // getData();
+        // getData();
         //getData2();
-    }
 
-    private void sendPush() {
-
-
-       sendMultiplePush();
-       //sendSinglePush();
+        final String title = "**Qvaya**";
+        final String message = "The has been a delay on a driver to your resident please be patient. A new Driver number "+dilayva+" has been assigned to your resident in substitution of the old driver.";
+        final String image = null;
+        //driverID = spinner.getSelectedItem().toString().trim();
 
 
-    }
+        // progressDialog.setMessage("Sending Push");
+        //  progressDialog.show();
 
-    private void Criteria() {
-
-            String type = "sefing";
-
-            BackgroundWorkerDelatAlocate backgroundWorkerDelatAlocate = new BackgroundWorkerDelatAlocate(this);
-
-            backgroundWorkerDelatAlocate.execute(type,oldRess.getText().toString(),oldTime.getText().toString());
-
-            Toast.makeText(this,oldRess.getText().toString()+" "+oldTime.getText().toString(),Toast.LENGTH_LONG).show();
-
-    }
-
-
-    private void sendMultiplePush() {
-        final String title = "Delay";                  //editTextTitle.getText().toString();
-        final String message =reasonof.getText().toString();                // editTextMessage.getText().toString();
-        final String image = "";                //editTextImage.getText().toString();
-
-
-        //Criteria();
-     //   progressDialog.setMessage("Sending Push");
-       // progressDialog.show();
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPointsDelatAlocate.URL_SEND_MULTIPLE_PUSH_RES,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://qvayaapp.000webhostapp.com/Mtha/pushNotificationss/sendMultiplePush.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                      //  progressDialog.dismiss();
+                        // progressDialog.dismiss();
 
-                        Toast.makeText(ReallocateDriverDelatAlocate.this, response, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -630,8 +699,10 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
                 Map<String, String> params = new HashMap<>();
                 params.put("title", title);
                 params.put("message", message);
-                params.put("oldResss",oldRess.getText().toString().substring(0,3));
-                params.put("oldTimes",oldTime.getText().toString());
+                params.put("time",residencetime);
+                params.put("resname",residence);
+                params.put("oldDriver",oldDriver);
+                params.put("newDriver",dilayva);
 
                 if (!TextUtils.isEmpty(image))
                     params.put("image", image);
@@ -639,8 +710,89 @@ public class ReallocateDriverDelatAlocate extends AppCompatActivity implements A
             }
         };
 
-        MyVolleyDelatAlocate.getInstance(this).addToRequestQueue(stringRequest);
+        MyVolleyAssign.getInstance(getApplicationContext().getApplicationContext()).addToRequestQueue(stringRequest);
+
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//        builder.setCancelable(true);
+//        builder.setTitle("Sent...");
+//        builder.setMessage("Driver has been assigned");
+//        builder.setInverseBackgroundForced(true);
+//        builder.setPositiveButton("OK",
+//                new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog,
+//                                        int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+        //      AlertDialog alert = builder.create();
+//        alert.show();
     }
+
+    private void sendPush() {
+
+
+        //   sendMultiplePush();
+        //sendSinglePush();
+
+
+    }
+
+    private void Criteria() {
+
+        String type = "sefing";
+
+        BackgroundWorkerDelatAlocate backgroundWorkerDelatAlocate = new BackgroundWorkerDelatAlocate(this);
+
+        backgroundWorkerDelatAlocate.execute(type,oldRess.getText().toString(),oldTime.getText().toString());
+
+        // Toast.makeText(this,oldRess.getText().toString()+" "+oldTime.getText().toString(),Toast.LENGTH_LONG).show();
+
+    }
+
+
+//    private void sendMultiplePush() {
+//        final String title = "Delay";                  //editTextTitle.getText().toString();
+//        final String message =reasonof.getText().toString();                // editTextMessage.getText().toString();
+//        final String image = "";                //editTextImage.getText().toString();
+//
+//
+//        //Criteria();
+//     //   progressDialog.setMessage("Sending Push");
+//       // progressDialog.show();
+//
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPointsDelatAlocate.URL_SEND_MULTIPLE_PUSH_RES,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                      //  progressDialog.dismiss();
+//
+//                        Toast.makeText(ReallocateDriverDelatAlocate.this, response, Toast.LENGTH_LONG).show();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("title", title);
+//                params.put("message", message);
+//                params.put("oldResss",oldRess.getText().toString().substring(0,3));
+//                params.put("oldTimes",oldTime.getText().toString());
+//                Toast.makeText(getApplicationContext()," hhh"+ oldRess.getText().toString().substring(0,3),Toast.LENGTH_LONG).show();
+//                if (!TextUtils.isEmpty(image))
+//                    params.put("image", image);
+//                return params;
+//            }
+//        };
+//
+//        MyVolleyDelatAlocate.getInstance(this).addToRequestQueue(stringRequest);
+//    }
 
 //    private void sendSinglePush() {
 //        final String title = "";            //editTextTitle.getText().toString();

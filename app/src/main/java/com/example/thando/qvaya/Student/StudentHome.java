@@ -78,7 +78,7 @@ public class StudentHome extends AppCompatActivity {
         CardViewEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StudentHome.this, StudentEvent.class);
+                Intent intent = new Intent(StudentHome.this, StudentViewNotification.class);
                 startActivity(intent);
             }
         });

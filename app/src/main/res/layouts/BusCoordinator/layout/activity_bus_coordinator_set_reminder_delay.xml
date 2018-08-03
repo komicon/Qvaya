@@ -30,6 +30,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="175dp" />
 
+    <Spinner
+        android:id="@+id/getFreeBuses"
+        android:layout_width="219dp"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="243dp" />
+
     <Button
 
         android:id="@+id/AssignBusBTN"

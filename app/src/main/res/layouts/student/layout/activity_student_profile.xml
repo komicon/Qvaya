@@ -28,11 +28,11 @@
 
             android:id="@+id/profile"
             android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_height="195dp"
 
-            android:layout_below="@+id/header_cover_image"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="-130dp"
+            android:layout_marginTop="5dp"
             android:clickable="true"
             android:elevation="5dp"
             android:padding="20dp"
@@ -44,7 +44,8 @@
         <RelativeLayout
             android:id="@+id/profile_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="154dp"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/header_cover_image"
             android:background="#ebca0707"
             android:elevation="4dp"
@@ -65,11 +66,12 @@
                 android:visibility="invisible" />
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/txtFullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="41dp"
                 android:text="Thando Langa"
                 android:textColor="#fff"
                 android:textSize="24sp"
@@ -78,20 +80,20 @@
             <TextView
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_below="@+id/designation"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:textColor="#fff"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="21300111" />
 
             <TextView
                 android:id="@+id/designation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/name"
+                android:layout_below="@+id/txtFullName"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:text="Designer"
                 android:textColor="#fff"
                 android:textSize="18sp" />
@@ -100,19 +102,22 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/profile_layout"
-            android:layout_margin="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
             android:background="#fff"
             android:elevation="4dp"
+
             android:orientation="vertical"
             android:paddingBottom="20dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="20dp"
-
-            >
+            android:paddingTop="20dp">
 
             <TextView
                 android:id="@+id/textView5"
@@ -135,7 +140,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:clickable="true"
-                android:text="Work: "
+                android:text="Identity: "
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -159,7 +164,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:clickable="true"
-                android:text="Marriage:"
+                android:text="StudyPeriod:"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -183,18 +188,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
                 android:clickable="true"
-                android:text="Address: "
+                android:text="Passasprt: "
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/blood_group"
+                android:id="@+id/txtPassport"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="19dp"
                 android:layout_margin="5dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -204,7 +209,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dob"
+                android:id="@+id/txtDob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -213,10 +218,10 @@
                 android:clickable="true"
                 android:text="01/01/2017"
                 app:layout_constraintLeft_toRightOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/marriage" />
+                app:layout_constraintTop_toBottomOf="@+id/txtStudyPeriod" />
 
             <TextView
-                android:id="@+id/marriage"
+                android:id="@+id/txtStudyPeriod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -224,10 +229,10 @@
                 android:clickable="true"
                 android:text="Single"
                 app:layout_constraintLeft_toRightOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/gender" />
+                app:layout_constraintTop_toBottomOf="@+id/txtGender" />
 
             <TextView
-                android:id="@+id/gender"
+                android:id="@+id/txtGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -236,10 +241,10 @@
                 android:clickable="true"
                 android:text="Male"
                 app:layout_constraintLeft_toRightOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/mobileNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNumber" />
 
             <TextView
-                android:id="@+id/occupation"
+                android:id="@+id/txtIDNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -251,7 +256,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <TextView
-                android:id="@+id/mobileNumber"
+                android:id="@+id/txtNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -260,10 +265,10 @@
                 android:clickable="true"
                 android:text="9876543210"
                 app:layout_constraintLeft_toRightOf="@+id/textView22"
-                app:layout_constraintTop_toBottomOf="@+id/occupation" />
+                app:layout_constraintTop_toBottomOf="@+id/txtIDNum" />
 
             <TextView
-                android:id="@+id/approved_by"
+                android:id="@+id/txtRegPer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -271,17 +276,17 @@
                 android:clickable="true"
                 android:text="Registered"
                 app:layout_constraintLeft_toRightOf="@+id/textView26"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:clickable="true"
                 android:text="thando@mut.ac.za"
                 app:layout_constraintLeft_toRightOf="@+id/textView27"
-                app:layout_constraintTop_toBottomOf="@+id/dob" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDob" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -291,7 +296,7 @@
                 android:layout_marginTop="5dp"
                 android:clickable="true"
 
-                android:text="Status"
+                android:text="Registered period "
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
@@ -322,7 +327,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <TextView
-                android:id="@+id/education"
+                android:id="@+id/txtEducation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -332,6 +337,57 @@
                 android:text="Software Development"
                 app:layout_constraintLeft_toRightOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:text="Citizenship: "
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <TextView
+                android:id="@+id/txtCitizen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:text="South african"
+                app:layout_constraintLeft_toRightOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:text="Disability: "
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/txtDisability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:text="Uglyness"
+                app:layout_constraintLeft_toRightOf="@+id/textView24"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
@@ -347,6 +403,4 @@
         </android.support.constraint.ConstraintLayout>
 
     </RelativeLayout>
-
-
 </ScrollView>

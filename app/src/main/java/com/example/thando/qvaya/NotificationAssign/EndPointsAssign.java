@@ -15,5 +15,4 @@ public class EndPointsAssign
     public static final String URL_SEND_MULTIPLE_PUSH = "https://barcodescanner.000webhostapp.com/sendMultiplePush.php";
     public static final String URL_FETCH_DEVICES =      "https://barcodescanner.000webhostapp.com/GetRegisteredDevices.php";*/
 
-
 }

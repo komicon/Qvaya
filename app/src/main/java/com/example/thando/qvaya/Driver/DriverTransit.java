@@ -111,12 +111,12 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static java.security.AccessController.getContext;
 
 public class DriverTransit extends AppCompatActivity  implements View.OnClickListener{
-
     String employeeID = "";
     String destination = "";
     String timeTrip = "";
     TextView timeText;
     Button here;
+    Button leaving;
     String ServerURL = "https://qvayaapp.000webhostapp.com/Thando/displayprofile.php" ;
     //String ServerURL = "https://qvayaapp.000webhostapp.com/Thando/pushNotification/delaybusco.php" ;
     EditText namem, email ;
@@ -153,8 +153,8 @@ public class DriverTransit extends AppCompatActivity  implements View.OnClickLis
         delaybtn = findViewById(R.id.delayBTN2);
         delaybtn.setEnabled(false);
 
-         s1 =  findViewById(R.id.switch1);
-         s2 =  findViewById(R.id.switch2);
+        s1 =  findViewById(R.id.switch1);
+        s2 =  findViewById(R.id.switch2);
 
         s.setOnCheckedChangeListener(changeChecker);
         s1.setOnCheckedChangeListener(changeChecker);
@@ -163,7 +163,7 @@ public class DriverTransit extends AppCompatActivity  implements View.OnClickLis
         //------
         timeText = findViewById(R.id.timertxt);
         here = findViewById(R.id.HereBTN);
-
+        leaving =findViewById(R.id.LeavingBTN);
         employeeID = username ;
 
         String type = "first";
@@ -210,15 +210,28 @@ public class DriverTransit extends AppCompatActivity  implements View.OnClickLis
 
 
     }
+    BackgroundDriverStudentNotify b = new BackgroundDriverStudentNotify(this);
+    BackgroundDriverStudentNotify b2 = new BackgroundDriverStudentNotify(this);
+    BackgroundDriverStudentNotify b3 = new BackgroundDriverStudentNotify(this);
 
     public void BusIsHereBTN(View view) {
 
-//300000
-        new CountDownTimer(300000,1000) {
+        sendMultiplePush("Mshana the bus is here","Qvaya");
+        b.execute(destination,"Mshana the bus is here");
+        here.setEnabled(false);
+
+    }
+
+    public void LeavingBTN(View view) {
+        leaving.setEnabled(false);
+        here.setEnabled(false);
+        //60000
+        //300000
+        CountDownTimer qvaya = new CountDownTimer(300000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                updateTimer((int) (millisUntilFinished/1000));
+                updateTimer((int) (millisUntilFinished / 1000));
 
 
             }
@@ -226,19 +239,19 @@ public class DriverTransit extends AppCompatActivity  implements View.OnClickLis
             @Override
             public void onFinish() {
 
-                MediaPlayer player = MediaPlayer.create(getBaseContext(),R.raw.bell);
+                MediaPlayer player = MediaPlayer.create(getBaseContext(), R.raw.bell);
                 player.start();
                 timeText.setText("Time Out !!");
-                here.setEnabled(true);
+                sendMultiplePush("Mshana the bus has left!", "Qvaya");
+                b2.execute(destination,"Mshana the bus has left!");
+                //here.setEnabled(true);
             }
         }.start();
-
-
-
-        sendMultiplePush("The bus is about to leave in : 5 minutes","Buss leaving");
-        here.setEnabled(false);
-
+        sendMultiplePush("Mshana the bus is about to leave in : 5 minutes!!","Qvaya");
+        b3.execute(destination,"Mshana the bus is about to leave in : 5 minutes!!");
     }
+
+
     private void sendMultiplePush(String messages,String titles) {
         final String title = titles ;                  //editTextTitle.getText().toString();
         final String message = messages;                // editTextMessage.getText().toString();
@@ -280,6 +293,7 @@ public class DriverTransit extends AppCompatActivity  implements View.OnClickLis
 
         MyVolleyHereXul.getInstance(this).addToRequestQueue(stringRequest);
     }
+
     public void updateTimer(int secondsleft)
     {
         int minutes = (int) secondsleft / 60;
@@ -349,87 +363,88 @@ public class DriverTransit extends AppCompatActivity  implements View.OnClickLis
     public void BusDelayBtn(View view) {
 
 
-            // final Dialog alert = builder.create();
+        // final Dialog alert = builder.create();
 
-            final EditText txtUrl = new EditText(this);
+        final EditText txtUrl = new EditText(this);
 
 // Set the default text to a link of the Queen
-            txtUrl.setHint("Reason for delay");
+        txtUrl.setHint("Reason for delay");
 
-            new AlertDialog.Builder(this)
-                    .setTitle("Level 3 Delay")
-                    .setMessage("Driver ID: " + username)
-                    .setView(txtUrl)
-                    .setPositiveButton("Send Delay", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            String url = txtUrl.getText().toString();
-                            Toast.makeText(DriverTransit.this, "Reason for delay is--->"+url , Toast.LENGTH_SHORT).show();
-                            final String title = username;
-                            final String message = url;
-                            final String image = "";
-                            final String idnum = "Emp1027";
+        new AlertDialog.Builder(this)
+                .setTitle("Level 3 Delay")
+                .setMessage("Driver ID: " + username)
+                .setView(txtUrl)
+                .setPositiveButton("Send Delay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String url = txtUrl.getText().toString();
+                        Toast.makeText(DriverTransit.this, "Reason for delay is--->"+url , Toast.LENGTH_SHORT).show();
+                        final String title = username;
+                        final String message = url;
+                        final String image = "";
+                        final String idnum = "Emp1027";
 
-                            //-- add listview
-
-
-                            //---
-                            progressDialog = new ProgressDialog(DriverTransit.this);
-                            progressDialog.setMessage("Sending Push");
-                            progressDialog.show();
+                        //-- add listview
 
 
-
-                            StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPointsDelays.URL_SEND_SINGLE_PUSH,
-                                    new Response.Listener<String>() {
-                                        @Override
-                                        public void onResponse(String response) {
-                                            progressDialog.dismiss();
-
-                                            Toast.makeText(DriverTransit.this, response, Toast.LENGTH_LONG).show();
-                                            Log.i("Results",response);
+                        //---
+                        progressDialog = new ProgressDialog(DriverTransit.this);
+                        progressDialog.setMessage("Sending Push");
+                        progressDialog.show();
 
 
 
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPointsDelays.URL_SEND_SINGLE_PUSH,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        progressDialog.dismiss();
 
-                                        }
-                                    }) {
-                                @Override
-                                protected Map<String, String> getParams() throws AuthFailureError {
-                                    Map<String, String> params = new HashMap<>();
-                                    params.put("title", title);
-                                    if(statusSwitch1.equals("ON")){
-                                        selected = "1";
+                                        Toast.makeText(DriverTransit.this, response, Toast.LENGTH_LONG).show();
+                                        Log.i("Results",response);
+
+
+
                                     }
-                                    if(statusSwitch2.equals("ON")){
-                                        selected = "2";
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+
                                     }
-                                    if(statusSwitch3.equals("ON")){
-                                        selected = "3";
-                                    }
-                                    params.put("message", message + " \n,Delay!  " );
-                                    if (!TextUtils.isEmpty(image))
-                                        params.put("image", image);
-                                    params.put("email", idnum );
-                                    InsertData(title,message);
-                                    return params;
+                                }) {
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String, String> params = new HashMap<>();
+                                params.put("title", title);
+                                if(statusSwitch1.equals("ON")){
+                                    selected = "1";
                                 }
-                            };
-                            MyVolleyDelay.getInstance(DriverTransit.this).addToRequestQueue(stringRequest);
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                        }
-                    })
-                    .show();
+                                if(statusSwitch2.equals("ON")){
+                                    selected = "2";
+                                }
+                                if(statusSwitch3.equals("ON")){
+                                    selected = "3";
+                                }
+                                params.put("message", message + " \n,Delay!  " );
+                                if (!TextUtils.isEmpty(image))
+                                    params.put("image", image);
+                                params.put("email", idnum );
+                                InsertData(title,message);
+                                return params;
+                            }
+                        };
+                        MyVolleyDelay.getInstance(DriverTransit.this).addToRequestQueue(stringRequest);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                })
+                .show();
     }
     public void DoneBTN(View view) {
-
+        here.setEnabled(true);
+        leaving.setEnabled(true);
         // receiving data from other activity
         // Bundle bundle = getIntent().getExtras();
         //String recVariable = bundle.getString("ImpassingEmpID");

@@ -22,12 +22,14 @@ public class ConfigsDelatAlocate {
 
     ////////other part /////
 
-   public static final String DATA_URL3 = "https://qvayaapp.000webhostapp.com/Mtha/getoldDriverTripdetails.php";
-//
+    public static final String DATA_URL3 = "https://qvayaapp.000webhostapp.com/Mtha/getNumberPlateMtha.php";
+    //
 //
 //    //public static final String JSON_ARRAYREsi = "Residences";
-    public static final String JSON_ARRAY4 ="tripDetails";
+    public static final String JSON_ARRAY4 ="result";
     public static final String TAG_ResISNames = "Destination";
     public static final String TAG_Time ="Time";
+    public static final String TAG_Bus ="NumberPlate";
+    public static final String TAG_BusOld ="BusNumberPlate";
 
 }

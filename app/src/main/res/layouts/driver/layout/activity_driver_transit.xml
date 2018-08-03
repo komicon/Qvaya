@@ -17,7 +17,6 @@
 
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:clickable="true"
         app:backgroundTint="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,8 +29,6 @@
         android:layout_height="0dp"
         android:layout_marginBottom="18dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/circle_white"
@@ -45,39 +42,36 @@
         android:id="@+id/HereBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="51dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="18dp"
         android:onClick="BusIsHereBTN"
         android:text="Here!"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
-        app:layout_constraintEnd_toStartOf="@+id/delayBTN2"
-        app:layout_constraintStart_toStartOf="@+id/switch2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgview" />
 
     <Button
         android:id="@+id/delayBTN2"
         android:layout_width="76dp"
         android:layout_height="38dp"
         android:layout_marginBottom="38dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginStart="74dp"
         android:onClick="BusDelayBtn"
         android:text="Delay"
         app:layout_constraintBottom_toTopOf="@+id/fab"
-        app:layout_constraintEnd_toStartOf="@+id/fab" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/LeavingBTN" />
 
     <Button
         android:id="@+id/DoneBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
+        android:layout_marginBottom="204dp"
+        android:layout_marginEnd="16dp"
         android:onClick="DoneBTN"
         android:text="Done"
-        app:layout_constraintEnd_toEndOf="@+id/imgview"
-        app:layout_constraintTop_toTopOf="@+id/HereBTN" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/timertxt"
@@ -95,7 +89,6 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
         android:layout_marginStart="3dp"
         android:text="Delay Level 1"
         android:visibility="invisible"
@@ -106,21 +99,32 @@
         android:id="@+id/switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="138dp"
-        android:layout_marginLeft="47dp"
         android:layout_marginStart="47dp"
+        android:layout_marginTop="39dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HereBTN" />
 
     <Switch
         android:id="@+id/switch3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="6dp"
         android:text="Delay"
         app:layout_constraintStart_toEndOf="@+id/switch2"
         app:layout_constraintTop_toBottomOf="@+id/switch2" />
+
+    <Button
+        android:id="@+id/LeavingBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="48dp"
+        android:onClick="LeavingBTN"
+        android:text="Leaving"
+        app:layout_constraintBottom_toTopOf="@+id/switch1"
+        app:layout_constraintEnd_toStartOf="@+id/DoneBTN"
+        app:layout_constraintStart_toEndOf="@+id/HereBTN" />
 </android.support.constraint.ConstraintLayout>

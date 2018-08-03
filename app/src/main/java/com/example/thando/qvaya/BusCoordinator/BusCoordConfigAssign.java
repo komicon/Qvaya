@@ -20,4 +20,13 @@ public class BusCoordConfigAssign {
     public static final String JSON_ARRAY3 = "StudentRequested";
     public static final String TAG_Number = "number";
 
+
+
+
+    public static final String DATA_URL4 = "https://qvayaapp.000webhostapp.com/Lungcebo/getNumberPlate.php";
+    //Tags used in the JSON String
+    public static final String TAG_NumberPate= "NumberPlate";
+    //JSON array name
+    public static final String JSON_ARRAY4 = "result";
+
 }

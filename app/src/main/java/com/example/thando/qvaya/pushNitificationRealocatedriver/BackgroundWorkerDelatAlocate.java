@@ -55,6 +55,7 @@ public class BackgroundWorkerDelatAlocate extends AsyncTask<String,Void,String> 
                 String time = params[3];
                 String ress = params[4];
                 String reason = params[5];
+                String bus = params[6];
 
 
 
@@ -66,11 +67,12 @@ public class BackgroundWorkerDelatAlocate extends AsyncTask<String,Void,String> 
                 OutputStream outputStream = httpURLConnection.getOutputStream();
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String post_data  =    URLEncoder.encode("EmployID","UTF-8")+"="+URLEncoder.encode(empIdOld,"UTF-8")+"&"
-                + URLEncoder.encode("EmployeeID","UTF-8")+"="+URLEncoder.encode(empIdNew,"UTF-8")+"&"
-                + URLEncoder.encode("Time","UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"
-                + URLEncoder.encode("ResID","UTF-8")+"="+URLEncoder.encode(ress,"UTF-8")+"&"
-                + URLEncoder.encode("ReasonOfDelay","UTF-8")+"="+URLEncoder.encode(reason,"UTF-8");
+                String post_data  = URLEncoder.encode("EmployID","UTF-8")+"="+URLEncoder.encode(empIdOld,"UTF-8")+"&"
+                        + URLEncoder.encode("EmployeeID","UTF-8")+"="+URLEncoder.encode(empIdNew,"UTF-8")+"&"
+                        + URLEncoder.encode("Time","UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"
+                        + URLEncoder.encode("ResID","UTF-8")+"="+URLEncoder.encode(ress,"UTF-8")+"&"
+                        + URLEncoder.encode("ReasonOfDelay","UTF-8")+"="+URLEncoder.encode(reason,"UTF-8")+"&"
+                        + URLEncoder.encode("buss","UTF-8")+"="+URLEncoder.encode(bus,"UTF-8");
 
 
                 bufferedWriter.write(post_data);
@@ -181,7 +183,7 @@ public class BackgroundWorkerDelatAlocate extends AsyncTask<String,Void,String> 
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String post_data  = URLEncoder.encode("oldResss","UTF-8")+"="+URLEncoder.encode(ressOld,"UTF-8")+"&"
-                                  + URLEncoder.encode("oldTimes","UTF-8")+"="+URLEncoder.encode(timeTime,"UTF-8");
+                        + URLEncoder.encode("oldTimes","UTF-8")+"="+URLEncoder.encode(timeTime,"UTF-8");
 
 
                 bufferedWriter.write(post_data);
@@ -222,7 +224,7 @@ public class BackgroundWorkerDelatAlocate extends AsyncTask<String,Void,String> 
         return null;
     }
 
-        ProgressDialog loading;
+    ProgressDialog loading;
 
     @Override
     protected void onPreExecute() {
@@ -268,7 +270,7 @@ public class BackgroundWorkerDelatAlocate extends AsyncTask<String,Void,String> 
     protected void onPostExecute(String result) {
 //        alertDialog.setMessage(result);
 //        alertDialog.show();
-       // Intent intent = new Intent(context,ReallocateDriverDelatAlocate.class);
+        // Intent intent = new Intent(context,ReallocateDriverDelatAlocate.class);
 
         // Intent intent = new Intent(getBaseContext(), SignoutActivity.class);
         //intent.putExtra("result", result );

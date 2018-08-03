@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView
+<ScrollView
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,37 +9,32 @@
     android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <RelativeLayout
+
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.thando.qvaya.AdminCoordinator.AdminCreateCoordinator"
-        tools:layout_editor_absoluteY="25dp">
+
+        tools:context="com.example.thando.qvaya.AdminCoordinator.AdminCreateCoordinator">
 
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout11"
-            android:layout_width="0dp"
+            android:layout_width="282dp"
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="9dp"
-            android:layout_marginEnd="51dp"
-            android:layout_marginLeft="51dp"
-            android:layout_marginRight="51dp"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="16dp"
-            android:hint="name"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="58dp"
+            android:hint="name">
 
             <EditText
                 android:id="@+id/EmpNameTxt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:inputType="text"
                 android:labelFor="@+id/EmpNameTxt"
                 android:maxLength="100" />
@@ -49,26 +44,19 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout12"
 
-            android:layout_width="0dp"
+            android:layout_width="282dp"
 
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginEnd="51dp"
-            android:layout_marginLeft="51dp"
-            android:layout_marginRight="51dp"
-            android:layout_marginStart="51dp"
-            android:hint="surname"
-            app:layout_constraintBottom_toTopOf="@+id/spinnerGender"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="127dp"
+            android:hint="surname">
 
             <EditText
                 android:id="@+id/EmpSurnametxt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:filterTouchesWhenObscured="true"
                 android:inputType="text|textPersonName"
                 android:labelFor="@+id/EmpSurnametxt"
@@ -80,26 +68,18 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout22"
-            android:layout_width="0dp"
+            android:layout_width="281dp"
 
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginLeft="49dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginStart="49dp"
-            android:hint="year_started"
-            app:layout_constraintBottom_toTopOf="@+id/CreateDriverAdmin"
-            app:layout_constraintEnd_toStartOf="@+id/fab"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout14"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_below="@+id/textInputLayout12"
+            android:layout_centerHorizontal="true"
+            android:hint="year_started">
 
             <EditText
                 android:id="@+id/testtxt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:inputType="number"
                 android:labelFor="@+id/testtxt"
                 android:maxLength="4" />
@@ -108,26 +88,19 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout15"
-            android:layout_width="0dp"
+            android:layout_width="282dp"
 
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="51dp"
-            android:layout_marginLeft="51dp"
-            android:layout_marginRight="51dp"
-            android:layout_marginStart="51dp"
-            android:hint="email"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout17"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout16"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="246dp"
+            android:hint="email">
 
             <EditText
                 android:id="@+id/EmailEMployeeBus"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:inputType="textEmailAddress"
                 android:labelFor="@+id/EmailEMployeeBus"
                 android:maxLength="100" />
@@ -136,26 +109,19 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout16"
-            android:layout_width="0dp"
+            android:layout_width="282dp"
 
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginEnd="51dp"
-            android:layout_marginLeft="51dp"
-            android:layout_marginRight="51dp"
-            android:layout_marginStart="51dp"
-            android:hint="age"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout15"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerGender"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="298dp"
+            android:hint="age">
 
             <EditText
                 android:id="@+id/AgeEmptxt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:inputType="number"
                 android:maxLength="2" />
 
@@ -163,26 +129,18 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout17"
-            android:layout_width="0dp"
+            android:layout_width="282dp"
 
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="51dp"
-            android:layout_marginLeft="51dp"
-            android:layout_marginRight="51dp"
-            android:layout_marginStart="51dp"
-            android:hint="home_address"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout15"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_below="@+id/textInputLayout16"
+            android:layout_centerHorizontal="true"
+            android:hint="home_address">
 
             <EditText
                 android:id="@+id/HomeAddEmptxt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:inputType="text|textAutoComplete|textMultiLine|textEmailAddress"
                 android:labelFor="@+id/HomeAddEmptxt"
                 android:maxLength="100" />
@@ -192,22 +150,18 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout14"
-            android:layout_width="0dp"
+            android:layout_width="281dp"
 
 
-            android:layout_height="0dp"
-            android:layout_marginBottom="7dp"
-            android:hint="cell_number"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout22"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout22"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout22"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout17"
-            tools:ignore="MissingConstraints">
+            android:layout_height="60dp"
+            android:layout_above="@+id/imagetxt"
+            android:layout_centerHorizontal="true"
+            android:hint="cell_number">
 
             <EditText
                 android:id="@+id/CellNumbertxt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:inputType="phone"
                 android:maxLength="10" />
 
@@ -219,50 +173,68 @@
             android:id="@+id/CreateDriverAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:onClick="CreateCoordinaAdminBTN"
             android:text="create_coordinator"
             android:textColor="@color/white"
-            app:backgroundTint="@color/darkgrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout22"
-            tools:ignore="MissingConstraints" />
+            app:backgroundTint="@color/darkgrey" />
 
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="17dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="19dp"
             android:clickable="true"
             android:focusable="true"
             app:backgroundTint="@color/cardview_light_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textInputLayout22"
-            app:srcCompat="?android:attr/homeAsUpIndicator"
-            tools:ignore="MissingConstraints" />
+            app:srcCompat="?android:attr/homeAsUpIndicator" />
 
         <Spinner
             android:id="@+id/spinnerGender"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="53dp"
-            android:layout_marginLeft="53dp"
-            android:layout_marginRight="53dp"
-            android:layout_marginStart="53dp"
-            android:entries="@array/Gender"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
+            android:layout_width="278dp"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
+            android:entries="@array/Gender" />
+
+        <Button
+            android:id="@+id/CaptureImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="177dp"
+            android:text="Capture Image" />
 
 
-    </android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_below="@+id/CaptureImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-177dp"
+            android:background="@drawable/placeholder" />
 
-</android.support.v4.widget.NestedScrollView>
+        <EditText
+            android:id="@+id/imagetxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_above="@+id/CaptureImage"
+            android:layout_alignParentStart="true"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Enter Image Name"
+            android:inputType="textPersonName" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
